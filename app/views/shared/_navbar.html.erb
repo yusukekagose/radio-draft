@@ -1,0 +1,44 @@
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      RadioDraft.com
+    </div>
+    <form action="#" class="search">
+      <input type="text" class="search__input" placeholder="keyword">
+      <button>
+        <i class="fa fa-search search__icon"></i>
+      </button>
+    </form>
+    <% unless current_user %>
+    <div class="" style="">
+      <%= link_to "登録", new_user_registration_path, class: "login-btn link-white" %>
+      <%= link_to "ログイン", new_user_session_path, class: "login-btn link-white"%>
+    </div>
+    <% end %>
+
+    <% if current_user %>
+    <nav class="user_nav">
+      <div class="user_nav__item-box">
+      </div>
+      <div class="user_nav__item-box">
+        <div class="dropdown">
+        <div class="dropbtn">
+          <div class="avatar">
+            <%= image_tag avatar_url(current_user), class: "rounded-circle avatar-medium"%>
+          </div>
+          <div class="user-name">
+            <%= user_name %>
+          </div>
+        </div>
+        <div class="dropdown-content">
+          <a href="#">マイページ</a>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </div>
+        </div>
+      </div>
+    </nav>
+    <% end %>
+
+  </div>
+</header>
