@@ -27,6 +27,9 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 #icons
 gem 'font-awesome-rails'
 
+#for Scraping
+gem 'mechanize', '~> 2.7', '>= 2.7.6'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

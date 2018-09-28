@@ -1,27 +1,33 @@
-<h2>Log in</h2>
 
+<div class="user-form">
+<div class="text-center user-form__title">ログイン</div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="user-form__field">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "user-form__input" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="user-form__field">
+    <%= f.label :password, "パスワード" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "user-form__input" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="user-form__field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="user-form__field">
+    <%= f.submit "ログイン", class: "user-form__btn btn" %>
   </div>
-  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "link-primary" %>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="user-form__field user-form__btn text-center facebook">
+    <%= link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, class: "link-white btn" %>
+  </div>
+
+<% end %>
+</div>
+</div>
+
