@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_234732) do
+ActiveRecord::Schema.define(version: 2018_10_01_060608) do
+
+  create_table "drafts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "radio_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["radio_id"], name: "index_drafts_on_radio_id"
+    t.index ["user_id"], name: "index_drafts_on_user_id"
+  end
 
   create_table "radios", force: :cascade do |t|
     t.string "name"

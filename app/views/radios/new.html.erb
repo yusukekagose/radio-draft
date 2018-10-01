@@ -1,2 +1,18 @@
-<h1>Radios#new</h1>
-<p>Find me in app/views/radios/new.html.erb</p>
+<%= form_for @radio, html: {class: 'radio-form'} do |f| %>
+  <div class="radio-form__field">
+    <%= f.text_field :name, placeholder: "名前",class: "radio-form__input" %>
+  </div>
+  <div class="radio-form__field">
+    <%= f.text_field :url, placeholder: "url",class: "radio-form__input" %>
+  </div>
+  <div class="radio-form__field">
+    <%= f.text_field :img, placeholder: "img",class: "radio-form__input" %>
+  </div>
+  <div class="radio-form__field">
+    <%= f.collection_select :station_id, Station.all, :id, :name, {}, { autofocus: 'false', class: 'radio-form__select'} %>
+  </div>
+  <div class="radio-form__field">
+    <%= f.submit "送信", class: "radio-form__btn btn" %>
+  </div>
+<% end %>
+

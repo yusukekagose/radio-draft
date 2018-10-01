@@ -1,0 +1,13 @@
+<div>
+  <%= form_for @draft, url: drafts_path(@radio_id), html: {class: 'radio-form'} do |f| %>
+    <div class="radio-form__field">
+      <%= f.text_field :title, placeholder: "タイトル(なしでもいい)",class: "radio-form__input" %>
+    </div>
+    <div class="radio-form__field">
+      <%= f.text_field :content, placeholder: "下書き",class: "radio-form__input" %>
+    </div>
+    <div class="radio-form__field">
+      <%= f.submit "送信", class: "radio-form__btn btn" %>
+    </div>
+  <% end %>
+</div>
