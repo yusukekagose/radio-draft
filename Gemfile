@@ -27,6 +27,12 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 #icons
 gem 'font-awesome-rails'
 
+#webpack to use Vue
+gem 'webpacker'
+
+#for many to many form
+gem 'cocoon', '~> 1.2', '>= 1.2.11'
+
 #for Scraping
 gem 'mechanize', '~> 2.7', '>= 2.7.6'
 

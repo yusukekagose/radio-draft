@@ -1,0 +1,4 @@
+<% radio.speakers.each_with_index do |speaker, index| %>
+
+<input type="text" name="post[speakers_attributes][<%= index %>][name]" id="post_speakers_attributes_<%= index%>_name">
+<% end %>

@@ -1,24 +1,28 @@
 <% radios.each do |radio|%>
 <div class="card pointer">
+  <%= link_to radio_path(radio), class: "link-black" do %>
   <%if params[:station].present? %>
   <div class="card__header">
     <strong><%= radio.station.name %></strong>
   </div>
   <% end %>
   <% if radio.img %>
-  <%= link_to radio_path(radio) do %>
   <%= image_tag(radio.img, :alt => "img", :class => "card__img") %>
-  <% end %>
+  <% else %>
+  <%= image_tag("no-img.png", :alt => "img", :class => "card__img") %>
   <% end %>
   <div class="card__content">
     <h4 class="link-black"><%= radio.name %></h4>
-    <p>出演者<strong class="card__content__name">有吉弘行</strong></p>
+    <% radio.speakers.each do |speaker| %>
+    <p>出演者<strong class="card__content__name"><%= speaker.name %></strong></p>
+    <% end %>
     <div>
-      draft<%= radio.drafts.count%>
-    </div>
-    <div>
-      <%= link_to "ハガキを書く", new_draft_path(radio), class: "btn link-black" %>
+      Draft <%= radio.drafts.count%>
     </div>
   </div>
+  <div class="card__write-letter">
+    <%= link_to "ハガキを書く", new_draft_path(radio), class: "btn link-white" %>
+  </div>
+  <% end %>
 </div>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_060608) do
+ActiveRecord::Schema.define(version: 2018_10_02_090408) do
 
   create_table "drafts", force: :cascade do |t|
     t.string "title"
@@ -19,8 +19,16 @@ ActiveRecord::Schema.define(version: 2018_10_01_060608) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "segment_id"
     t.index ["radio_id"], name: "index_drafts_on_radio_id"
     t.index ["user_id"], name: "index_drafts_on_user_id"
+  end
+
+  create_table "radio_speakers", force: :cascade do |t|
+    t.integer "radio_id"
+    t.integer "speaker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "radios", force: :cascade do |t|
@@ -31,6 +39,20 @@ ActiveRecord::Schema.define(version: 2018_10_01_060608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["station_id"], name: "index_radios_on_station_id"
+  end
+
+  create_table "segments", force: :cascade do |t|
+    t.string "name"
+    t.integer "radio_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["radio_id"], name: "index_segments_on_radio_id"
+  end
+
+  create_table "speakers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stations", force: :cascade do |t|

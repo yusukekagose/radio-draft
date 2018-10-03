@@ -13,6 +13,7 @@ class RadiosController < ApplicationController
 
   def create
     @radio = Radio.new(radio_params)
+    puts radio_params
     if @radio.save
       redirect_to request.referrer, notice: 'success'
     else
@@ -33,6 +34,6 @@ class RadiosController < ApplicationController
     end
 
     def radio_params
-      params.require(:radio).permit(:name, :url, :img, :station_id)
+      params.require(:radio).permit(:name, :url, :img, :station_id, speaker_ids:[], speakers_attributes: [:name])
     end
 end

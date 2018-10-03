@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="dropdown-content">
-          <a href="#">マイページ</a>
+          <%= link_to "マイページ", user_path(current_user), class: "" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </div>
         </div>

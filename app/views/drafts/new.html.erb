@@ -1,13 +1,59 @@
-<div>
-  <%= form_for @draft, url: drafts_path(@radio_id), html: {class: 'radio-form'} do |f| %>
-    <div class="radio-form__field">
-      <%= f.text_field :title, placeholder: "タイトル(なしでもいい)",class: "radio-form__input" %>
+<div class="draft-new-container">
+  <div class="draft-new__header">
+    <div>
+      <% if @radio.img %>
+        <%= image_tag(@radio.img, :alt => "img", :class => "img") %>
+      <% else %>
+        <%= image_tag("no-img.png", :alt => "img", :class => "img") %>
+      <% end %>
     </div>
-    <div class="radio-form__field">
-      <%= f.text_field :content, placeholder: "下書き",class: "radio-form__input" %>
+    <div id="segment-form" class="draft-new__header__content">
+      <div class=""><%= link_to @radio.name, radio_path(@radio), class: "link-black font-l" %></div>
+      <div class="font-ml">
+        <span>出演者</span>
+        <button class="btn">追加</button>
+      </div>
+      <div>
+        <% @radio.speakers.each do |speaker| %>
+          <span class="badge-primary"><%= speaker.name %></span>
+        <% end %>
+      </div>
+      <div class="font-ml">
+        <span>コーナー</span>
+        <button class="btn" v-on:click="toggleForm" v-if="showButton">追加</button>
+      </div>
+      <div>
+        <% @radio.segments.each do |segment| %>
+          <span class="badge-primary"><%= segment.name %></span>
+        <% end %>
+      </div>
+      <div class="radio-form__field">
+        <form action="" v-if="showForm">
+          <input class="form-control" type="radio-form__input" name="name" v-model="segment.name">
+          <button class="radio-form__btn btn">Submit</button>
+        </form>
+        <%= form_for @segment, url: segments_path(@radio) do |s| %>
+          <%= s.text_field :name, placeholder: "タイトル(なしでもいい)",class: "radio-form__input" %>
+          <%= s.submit "送信", class: "radio-form__btn btn" %>
+        <% end %>
+      </div>
     </div>
-    <div class="radio-form__field">
-      <%= f.submit "送信", class: "radio-form__btn btn" %>
-    </div>
-  <% end %>
+  </div>
+
+  <div class="">
+    <%= form_for @draft, url: drafts_path(@radio.id), html: {class: ''} do |f| %>
+      <div class="form-field">
+        <%= f.collection_select :segment_id, @radio.segments.all, :id, :name, {}, { autofocus: 'false', class: 'form-select'} %>
+      </div>
+      <div class="form-field">
+        <%= f.text_field :title, placeholder: "タイトル(なしでもいい)",class: "form-control" %>
+      </div>
+      <div class="form-field">
+        <%= f.text_area :content, placeholder: "下書き",class: "form-control" , rows: "25" %>
+      </div>
+      <div class="form-field">
+        <%= f.submit "送信", class: "btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,7 +1,8 @@
 class DraftsController < ApplicationController
   def new
-    @radio_id = params[:id]
+    @radio = Radio.find(params[:id])
     @draft = Draft.new
+    @segment = Segment.new
   end
 
   def create
@@ -16,6 +17,6 @@ class DraftsController < ApplicationController
 
   private
     def draft_params
-      params.require(:draft).permit(:title, :content).merge(user_id: current_user.id)
+      params.require(:draft).permit(:title, :content, :segment_id).merge(user_id: current_user.id)
     end
 end
