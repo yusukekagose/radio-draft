@@ -5,12 +5,30 @@
 
 .draft-new-container {
   width: 60%;
-  margin: 0 auto;
+  margin: 3rem auto;
 }
 .draft-new__header {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
+}
+.draft-new__header__img {
+  height: 20rem;
+}
+.draft-new__header__content {
+  .form {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    .form-control {
+      border-radius: none !important;
+    }
+    .btn-primary {
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+    }
+  }
 }
 @media (max-width: 1180px) {
   .draft-new-container {

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :radios, only: [:index, :show, :new, :create, :edit, :destroy] do
     member do
       resources :drafts, only: [:new, :create]
-      resources :segments, only: [:create]
+      resources :segments, only: [:index, :create]
     end
   end
 

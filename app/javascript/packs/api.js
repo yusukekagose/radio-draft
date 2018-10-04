@@ -1,15 +1,18 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// export function createSegment(segment) {
-//     var localSegment = segment;
-
-//     delete localSegment.id;
-
-//     return axios.post('/tsegments.json', localSegment)
-//         .then(function (response){
-//             return response.data
-//         })
-//         .catch(function(error){
-//             console.log(error);
-//         })
-// }
+export function listSegments (id) {
+    return axios.get(`/radios/${id}/segments.json`)
+           .then(function(response){
+                return response.data;
+            })
+}
+export function createSegment(segment, id) {
+    var localSegment = segment;
+    return axios.post(`/radios/${id}/segments.json`, localSegment)
+        .then(function (response){
+            return response.data
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+}

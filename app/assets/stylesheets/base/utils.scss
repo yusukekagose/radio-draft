@@ -61,6 +61,7 @@
   display: inline-block;
   margin-top: 3px;
   font-size: $small-font-size;
+  margin-right: 5px;
 }
 .badge-primary {
   @extend %badge;
@@ -89,7 +90,7 @@
   -webkit-appearance: none; /* Safari & Chrome */
   &:before {
     content: '\25bc';
-    font-size: 1.2em;
+    font-size: 1.2rem;
     position: absolute;
     color: $color-primary;
     top: 35px;
@@ -104,8 +105,22 @@
 %btn {
   border-radius: 3px;
   outline: none;
+  border: none;
   cursor: pointer;
   font-size: $default-font-size;
+}
+.btn-outline {
+  @extend %btn;
+  font-weight: bold;
+  border: 1.5px solid $color-primary;
+  color: $color-primary;
+  padding: .25rem 1rem;
+  background: $color-white;
+  font-size: $small-font-size;
+  &:hover {
+    color: $color-white;
+    background: $color-primary;
+  }
 }
 .btn-primary {
   @extend %btn;
