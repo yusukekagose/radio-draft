@@ -16,7 +16,7 @@ document.addEventListener('turbolinks:load', () => {
       segments: [],
       segment:
         {
-          name: 'aaaa'
+          name: ''
         },
       showForm: false,
       showButton: true,

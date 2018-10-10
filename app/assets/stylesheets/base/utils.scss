@@ -1,5 +1,12 @@
 @import "base/variables";
 
+//Margin///////////
+.mr-m {
+  margin-right: 1rem;
+}
+.word-wrap {
+  word-wrap: break-word;
+}
 /////DROPDOWN////////
 .dropbtn {
   font-size: $default-font-size;
@@ -40,6 +47,9 @@
 .dropdown:hover .dropbtn {
 }
 //////FONT///////
+.font-default {
+  font-size: $default-font-size;
+}
 .font-ml {
   font-size: $ml-font-size;
 }

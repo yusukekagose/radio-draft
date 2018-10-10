@@ -28,7 +28,20 @@ html {
     font-size: 50% !important;
   }
 }
-
+.d-s {
+  display: none;
+}
+.d-none-s {
+  display: block;
+}
+@media (max-width: $bp-small) {
+  .d-s {
+    display: block;
+  }
+  .d-none-s {
+    display: none;
+  }
+}
 ////////HOME LAYOUT///
 .home-container {
   margin: 3rem 0 3rem;
@@ -192,6 +205,7 @@ html {
     grid-template-columns: 100%;
   }
 }
+
 ///LINK/////////
 .link-white:link,
 .link-white:visited {
@@ -247,6 +261,11 @@ html {
     width: 95% !important;
   }
 }
+@media only screen and (max-width: $bp-largest) {
+  .container {
+    width: 95%;
+  }
+}
 /////Column///
 /////CARD///
 .card {
@@ -259,9 +278,14 @@ html {
     width:100%
   }
   &__content {
-    padding: 3px 16px;
+    padding: 3px 10px;
+    display: grid;
+    grid-template-rows: 20px 50px auto;
     &__name {
       padding-left: 5px;
+    }
+    .fa-file {
+      color: $color-primary;
     }
   }
   &__footer {

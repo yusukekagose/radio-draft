@@ -6,6 +6,8 @@
 @import "base/base";
 @import "base/utils";
 
+
+//new//////
 .radio-form {
   margin: 5rem auto;
   width: 60%;
@@ -54,5 +56,33 @@
       transform: scale(0.94, 0.62);
     }
   }
+}
+///Show/////////////
+.radio-container {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-gap: 20px;
+  &__img {
+    width: 100%;
+    height: 30rem;
+  }
+  &__content {
+    &__speaker {
+      font-size: $ml-font-size;
+    }
+  }
+}
 
+@media (max-width: $bp-small) {
+  .radio-container {
+    display: flex;
+    flex-direction: column;
+    &__img {
+      width: 100%;
+      height: 15rem;
+    }
+    &__content {
+      margin-top: 1rem;
+    }
+  }
 }

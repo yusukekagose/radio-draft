@@ -1,10 +1,37 @@
-<% @drafts.each do |draft| %>
-<div>
-  <%= draft.title %>
-  <%= draft.content %>
-  <%= link_to draft.radio.name, radio_path(draft.radio) %>
-  <% if draft.segment.present? %>
-    <%= draft.segment.name %>
-  <% end %>
+
+<div class="user-show-container" style="margin-top: 3rem;">
+  <div class="">
+    sssssssss
+  </div>
+  <div>
+    <div class="draft-table-row draft-table-row-header">
+      <div>下書き</div>
+      <div>番組</div>
+      <div>コーナー</div>
+      <div></div>
+    </div>
+    <% @drafts.each do |draft| %>
+    <div class="draft-table-row draft-table-row-content">
+      <div>
+        <div class="font-default pointer"><%= draft.title %></div>
+        <div class="word-wrap">
+          <%= draft.content %>
+        </div>
+      </div>
+      <div>
+        <%= link_to draft.radio.name, radio_path(draft.radio), class: "link-black" %>
+      </div>
+      <div>
+        <% if draft.segment.present? %>
+          <%= draft.segment.name %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to edit_draft_path(draft),class: "link-black" do %><i class="fa fa-edit"></i><% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
-<% end %>
+
+

@@ -10,13 +10,23 @@
     <% end %>
   </div>
   <div class="card__content">
-    <h4 class="link-black"><%= link_to radio.name, radio_path(radio), class: "link-black" %></h4>
-    <% radio.speakers.each do |speaker| %>
-    <p>出演者<strong class="card__content__name"><%= speaker.name %></strong></p>
-    <% end %>
-    <p>
-      Draft <%= radio.drafts.count%>
-    </p>
+    <div>
+      <h4 class="link-black d-none-s">
+        <%= link_to radio.name.truncate(11, omission: '...'), radio_path(radio), class: "link-black" %>
+      </h4>
+      <h4 class="link-black d-s">
+        <%= link_to radio.name.truncate(20, omission: '...'), radio_path(radio), class: "link-black" %>
+      </h4>
+    </div>
+    <div>
+      出演者
+      <% radio.speakers.each do |speaker| %>
+        <span><%= speaker.name %></span>
+      <% end %>
+    </div>
+    <div>
+      <i class="fa fa-file mr-m"></i><%= radio.drafts.count%>
+    </div>
   </div>
   <div class="card__footer">
     <%= link_to "ハガキを書く", new_draft_path(radio), class: "btn link-white" %>

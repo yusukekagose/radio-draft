@@ -1,19 +1,25 @@
-<div class="container">
-  <div>
-    <h3><%= @radio.name %></h3>
+<div class="container radio-show" style="margin-top: 3rem;">
+  <div style="margin-bottom: 2rem;">
+    <h2><%= @radio.name %></h2>
   </div>
-  <div class="radio-container" style="display: flex;">
-    <div class="radio-container__img" style="width: 60%;">
+  <div class="radio-container">
+    <div class="radio-container__img" style="">
       <% if @radio.img %>
-        <%= image_tag(@radio.img, :alt => "img", :class => "card__img") %>
+      <%= image_tag(@radio.img, :alt => "img", :class => "img") %>
+      <% else %>
+      <%= image_tag("no-img.png", :alt => "img", :class => "img") %>
       <% end %>
     </div>
     <div class="radio-container__content">
-      <div>
-        出演者: 有吉
+      <div class="radio-container__content__speaker">
+        <p>出演者</p>
+        <% @radio.speakers.each do |speaker| %>
+          <span class="mr-m"><%= speaker.name %></span>
+        <% end %>
       </div>
       <div>
-        url: <%= link_to @radio.url, @radio.url, target: "blank" %>
+        番組HP
+        <%= link_to @radio.url, @radio.url, target: "blank", class: "link-black" %>
       </div>
     </div>
   </div>

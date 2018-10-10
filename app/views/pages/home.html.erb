@@ -1,9 +1,8 @@
 <div class="">
   <%= link_to "ラジオ", new_radio_path %>
 </div>
-<div class="home-container">
-  <div class="row">
-    <%= render partial: "radios/list-home", locals: { radios: @radios }  %>
-  </div>
+<div class="row">
+  <%= render partial: "radios/list-home", locals: { radios: @radios }  %>
 </div>
+
 

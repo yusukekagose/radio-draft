@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :drafts, only: [:edit, :update]
+
   resources :dashboards, only: [:index]
 
 end
