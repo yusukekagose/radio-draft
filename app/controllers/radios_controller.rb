@@ -1,5 +1,5 @@
 class RadiosController < ApplicationController
-  before_action :set_radio, only: [:show]
+  before_action :set_radio, only: [:show, :edit]
 
   def show
   end

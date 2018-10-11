@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       resources :drafts, only: [:new, :create]
       resources :segments, only: [:index, :create]
+      resources :speakers, only: [:index, :create]
     end
   end
 

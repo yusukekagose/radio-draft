@@ -21,6 +21,9 @@
         番組HP
         <%= link_to @radio.url, @radio.url, target: "blank", class: "link-black" %>
       </div>
+      <div>
+        <%= link_to "Edit", edit_radio_path(@radio), class: "" %>
+      </div>
     </div>
   </div>
 </div>

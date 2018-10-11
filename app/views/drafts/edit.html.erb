@@ -32,7 +32,7 @@
     <%= form_for @draft, url: draft_path(@draft.id), html: {class: ''} do |f| %>
       <div class="form-field">
         <% default = @draft.segment.present? ? @draft.segment.id : "" %>
-        <%= f.select "segment_id", options_from_collection_for_select(@radio.segments, "id", "name", selected: default), include_blank: "" %>
+        <%= f.select "segment_id", options_from_collection_for_select(@radio.segments, "id", "name", selected: default), {include_blank: ""}, { autofocus: 'false', class: 'form-select'} %>
       </div>
       <div class="form-field">
         <%= f.text_field :title, placeholder: "タイトル(なしでもいい)",class: "form-control" %>

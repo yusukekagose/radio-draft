@@ -4,6 +4,12 @@
 .mr-m {
   margin-right: 1rem;
 }
+.mb-sm {
+  margin-bottom: 0.75rem;
+}
+.mb-m {
+  margin-bottom: 1rem;
+}
 .word-wrap {
   word-wrap: break-word;
 }
@@ -55,6 +61,9 @@
 }
 .font-l {
   font-size: $big-font-size;
+}
+.font-bold {
+  font-weight: bold;
 }
 //Color///
 .cl-white {

@@ -13,7 +13,11 @@
     <% @drafts.each do |draft| %>
     <div class="draft-table-row draft-table-row-content">
       <div>
-        <div class="font-default pointer"><%= draft.title %></div>
+        <div class="font-default pointer mb-sm">
+          <%= link_to edit_draft_path(draft),class: "link-black font-bold" do %>
+            <%= draft.title %>
+          <% end %>
+        </div>
         <div class="word-wrap">
           <%= draft.content %>
         </div>

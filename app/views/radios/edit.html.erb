@@ -1,2 +1,36 @@
-<h1>Radios#edit</h1>
-<p>Find me in app/views/radios/edit.html.erb</p>
+<div id="radio-edit" class="container radio-edit" style="margin-top: 3rem;">
+  <div style="margin-bottom: 2rem;">
+    <h2><%= @radio.name %></h2>
+  </div>
+  <div class="">
+    <div class="radio-container__img" style="">
+      <% if @radio.img %>
+      <%= image_tag(@radio.img, :alt => "img", :class => "img") %>
+      <% else %>
+      <%= image_tag("no-img.png", :alt => "img", :class => "img") %>
+      <% end %>
+    </div>
+    <div class="radio-container__content">
+      <div class="radio-container__content__speaker">
+        <span>出演者</span>
+        <button class="btn-outline" v-on:click="toggleSpeakerForm">{{btnSpeaker}}</button>
+      </div>
+      <div>
+        <span v-for="speaker in speakers" class="mr-m">{{ speaker.name }}</span>
+      </div>
+      <div>
+        <form class="form" action="" v-if="showSpeakerForm" v-on:submit.prevent="createSpeaker($event)">
+          <input class="form-control" type="text" v-model="speaker.name">
+          <button class="btn-primary">Submit</button>
+        </form>
+      </div>
+      <div>
+        番組HP
+        <%= link_to @radio.url, @radio.url, target: "blank", class: "link-black" %>
+      </div>
+      <div>
+        <%= link_to "Edit", edit_radio_path(@radio), class: "" %>
+      </div>
+    </div>
+  </div>
+</div>
