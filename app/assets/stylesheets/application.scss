@@ -217,6 +217,9 @@ html {
   text-decoration: none;
   color: $color-black;
 }
+.link-black:hover {
+  color: $color-primary;
+}
 .link-gray:link,
 .link-gray:visited {
   text-decoration: none;

@@ -1,5 +1,5 @@
 class RadiosController < ApplicationController
-  before_action :set_radio, only: [:show, :edit]
+  before_action :set_radio, only: [:show, :edit, :update]
 
   def show
   end
@@ -22,6 +22,14 @@ class RadiosController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @radio.update(radio_params)
+      redirect_to request.referrer, notice: 'success'
+    else
+      render "edit"
+    end
   end
 
   def destroy

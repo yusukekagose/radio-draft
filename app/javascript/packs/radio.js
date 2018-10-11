@@ -41,9 +41,9 @@ document.addEventListener('turbolinks:load', () => {
       clearSpeaker: function() {
         this.speaker = {};
       },
-      toggleForm: function () {
-        this.showForm = !this.showForm
-        if(this.showForm) {
+      toggleSegmentForm: function () {
+        this.showSegmentForm = !this.showSegmentForm
+        if(this.showSegmentForm) {
           this.btnSegment = "閉じる"
         } else {
           this.btnSegment = "追加"
@@ -60,7 +60,7 @@ document.addEventListener('turbolinks:load', () => {
       createSegment: function(event) {
         Api.createSegment(this.segment, this.radioId).then(function(response){
           app.listSegments();
-          app.clear();
+          app.clearSegment();
           app.message = `Task ${response.id} created.`
         })
       },

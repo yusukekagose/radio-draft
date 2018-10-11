@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :radios, only: [:index, :show, :new, :create, :edit, :destroy] do
+  resources :radios, only: [:index, :show, :new, :create, :edit, :destroy, :update] do
     member do
       resources :drafts, only: [:new, :create]
       resources :segments, only: [:index, :create]
