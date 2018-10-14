@@ -41,13 +41,12 @@ document.addEventListener('turbolinks:load', () => {
         }
       },
       createTask: function(event) {
-          Api.createSegment(this.segment, this.radioId).then(function(response){
-            app.listSegments();
-            app.clear();
-            app.message = `Task ${response.id} created.`
-          })
-        },
-
+        Api.createSegment(this.segment, this.radioId).then(function(response){
+          app.listSegments();
+          app.clear();
+          app.message = `Task ${response.id} created.`
+        })
+      },
 
     },
     beforeMount(){ this.listSegments(this.radioId) }

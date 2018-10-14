@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :drafts, only: [:new, :create]
       resources :segments, only: [:index, :create]
       resources :speakers, only: [:index, :create]
+      delete 'speaker/:speaker_id', to: 'speakers#destroy_radio_speakers'
     end
   end
 

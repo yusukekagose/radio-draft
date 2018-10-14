@@ -71,6 +71,17 @@ document.addEventListener('turbolinks:load', () => {
           app.message = `Speaker ${response.id} created.`
         })
       },
+      deleteSpeaker: function(event, id) {
+        event.stopImmediatePropagation();
+        let speakerIndex = this.speakers.findIndex(item => item.id == id);
+
+        if(speakerIndex > -1) {
+          Api.deleteSpeaker(this.radioId, id).then(function(response){
+            app.$delete(app.speakers, speakerIndex)
+            app.message = `Speaker ${id} deleted.`
+          });
+        }
+      },
 
 
     },

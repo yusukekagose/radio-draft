@@ -37,3 +37,13 @@ export function createSpeaker(speaker, id) {
             console.log(error);
         })
 }
+
+export function deleteSpeaker(radio_id, speaker_id) {
+    return axios.delete(`/radios/${radio_id}/speaker/${speaker_id}`)
+            .then(function(response){
+                return 'success'
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+}

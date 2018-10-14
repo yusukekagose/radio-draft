@@ -13,7 +13,13 @@
         <button class="btn-outline" v-on:click="toggleSpeakerForm">{{btnSpeaker}}</button>
       </div>
       <div>
-        <span v-for="speaker in speakers" class="mr-m">{{ speaker.name }}</span>
+        <span v-for="speaker in speakers" class="mr-m badge-primary">
+          {{ speaker.name }}
+          <span @click.prevent="deleteSpeaker($event, speaker.id)" class="pointer">
+            <i class="fa fa-times cl-black"></i>
+          </span>
+        </span>
+
       </div>
       <div>
         <form class="form" action="" v-if="showSpeakerForm" v-on:submit.prevent="createSpeaker($event)">

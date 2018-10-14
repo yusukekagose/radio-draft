@@ -1,5 +1,5 @@
 class SpeakersController < ApplicationController
-  before_action :set_radio, only: [:index, :create]
+  before_action :set_radio, only: [:index, :create, :destroy_radio_speakers]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -17,6 +17,18 @@ class SpeakersController < ApplicationController
       redirect_back(fallback_location: edit_radio_path(params[:id]))
     else
       redirect_back(fallback_location: edit_radio_path(params[:id]))
+    end
+  end
+
+  def destroy_radio_speakers
+    speaker = @radio.speakers.find(params[:speaker_id])
+
+    if speaker
+      if @radio.speakers.delete(speaker)
+        redirect_back(fallback_location: edit_radio_path(params[:id]))
+      else
+        redirect_back(fallback_location: edit_radio_path(params[:id]))
+      end
     end
   end
 
