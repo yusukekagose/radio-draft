@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  patch 'segment/:id/toggle_status', to: 'segments#toggle_status'
+
   resources :drafts, only: [:edit, :update]
 
   resources :dashboards, only: [:index]

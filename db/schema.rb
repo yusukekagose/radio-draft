@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_090408) do
+ActiveRecord::Schema.define(version: 2018_10_15_004900) do
 
   create_table "drafts", force: :cascade do |t|
     t.string "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_090408) do
     t.integer "radio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["radio_id"], name: "index_segments_on_radio_id"
   end
 

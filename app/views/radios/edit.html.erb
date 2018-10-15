@@ -1,45 +1,11 @@
-<div id="radio-edit" class="container radio-edit-container" style="margin-top: 3rem;">
-  <div class="" style="display: grid; grid-template-columns: 50% 50%;">
+<div id="radio-edit" class="radio-edit-container" style="margin-top: 3rem;">
+  <div class="" style="">
     <div class="radio-container__img" style="">
       <% if @radio.img %>
       <%= image_tag(@radio.img, :alt => "img", :class => "img") %>
       <% else %>
       <%= image_tag("no-img.png", :alt => "img", :class => "img") %>
       <% end %>
-    </div>
-    <div class="radio-container__content">
-      <div class="radio-container__content__speaker">
-        <span>出演者</span>
-        <button class="btn-outline" v-on:click="toggleSpeakerForm">{{btnSpeaker}}</button>
-      </div>
-      <div>
-        <span v-for="speaker in speakers" class="mr-m badge-primary">
-          {{ speaker.name }}
-          <span @click.prevent="deleteSpeaker($event, speaker.id)" class="pointer">
-            <i class="fa fa-times cl-black"></i>
-          </span>
-        </span>
-
-      </div>
-      <div>
-        <form class="form" action="" v-if="showSpeakerForm" v-on:submit.prevent="createSpeaker($event)">
-          <input class="form-control" type="text" v-model="speaker.name">
-          <button class="btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="radio-container__content__speaker">
-        <span>コーナー</span>
-        <button class="btn-outline" v-on:click="toggleSegmentForm">{{btnSegment}}</button>
-      </div>
-      <div>
-        <span v-for="segment in segments" class="badge-primary">{{ segment.name }}</span>
-      </div>
-      <div>
-        <form class="form" action="" v-if="showSegmentForm" v-on:submit.prevent="createSegment($event)">
-          <input class="form-control" type="text" v-model="segment.name">
-          <button class="btn-primary">Submit</button>
-        </form>
-      </div>
     </div>
   </div>
 
@@ -60,4 +26,56 @@
     </div>
     <% end %>
   </div>
+
+  <div class="radio-container__content">
+    <div class="radio-container__content__speaker">
+      <span>出演者</span>
+      <button class="btn-outline" v-on:click="toggleSpeakerForm">{{btnSpeaker}}</button>
+    </div>
+    <div>
+      <span v-for="speaker in speakers" class="mr-m badge-primary">
+        {{ speaker.name }}
+        <span @click.prevent="deleteSpeaker($event, speaker.id)" class="pointer">
+          <i class="fa fa-times cl-black"></i>
+        </span>
+      </span>
+
+    </div>
+    <div>
+      <form class="form" action="" v-if="showSpeakerForm" v-on:submit.prevent="createSpeaker($event)">
+        <input class="form-control" type="text" v-model="speaker.name">
+        <button class="btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="radio-container__content__speaker">
+      <span>コーナー</span>
+      <button class="btn-outline" v-on:click="toggleSegmentForm">{{btnSegment}}</button>
+    </div>
+    <div>
+      <form class="form" action="" v-if="showSegmentForm" v-on:submit.prevent="createSegment($event)">
+        <div>
+          <input class="form-control" type="text" v-model="segment.name">
+        </div>
+        <div>
+          <button class="btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <span class="badge-primary" v-for="segment in activeSegments">
+        {{ segment.name }}
+        <span class="badge-danger pointer" @click.prevent="toggleSegment($event, segment.id)">終了</span>
+      </span>
+    </div>
+    <hr>
+    <div>
+      <span class="badge-primary" v-for="segment in finishedSegments">
+        {{ segment.name }}
+        <span class="badge-success pointer" @click.prevent="toggleSegment($event, segment.id)">復活</span>
+      </span>
+    </div>
+
+  </div>
+
 </div>

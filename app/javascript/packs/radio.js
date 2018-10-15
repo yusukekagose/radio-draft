@@ -24,6 +24,14 @@ document.addEventListener('turbolinks:load', () => {
       btnSpeaker: "追加",
       radioId: window.location.pathname.split('/')[2],
     },
+    computed: {
+        finishedSegments :function() {
+          return this.segments.filter( item => item.status == "end" );
+        },
+        activeSegments: function() {
+          return this.segments.filter( item => item.status ==  "active");
+        },
+    },
     methods: {
       listSegments: function() {
         Api.listSegments(this.radioId).then(function(response){
@@ -35,7 +43,7 @@ document.addEventListener('turbolinks:load', () => {
             app.speakers = response;
         })
       },
-      clear: function() {
+      clearSegment: function() {
         this.segment = {};
       },
       clearSpeaker: function() {
@@ -62,6 +70,13 @@ document.addEventListener('turbolinks:load', () => {
           app.listSegments();
           app.clearSegment();
           app.message = `Task ${response.id} created.`
+        })
+      },
+      toggleSegment: function(event, id) {
+        event.stopImmediatePropagation();
+        Api.toggleSegment(id).then(function(response){
+          app.listSegments();
+          app.message = `Segment toggled.`
         })
       },
       createSpeaker: function(event) {

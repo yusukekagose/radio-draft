@@ -11,7 +11,6 @@ const router = new Router({
 document.addEventListener('turbolinks:load', () => {
   var app = new Vue({
     el: '#segment-form',
-    router,
     data: {
       segments: [],
       segment:
