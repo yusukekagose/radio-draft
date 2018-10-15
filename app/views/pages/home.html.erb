@@ -1,5 +1,10 @@
-<div class="">
-  <%= link_to "ラジオ", new_radio_path %>
+<div class="page-home-header">
+  <div class="page-home-header__left">
+    <span class="mr-l pointer">人気順</span><span class="mr-l pointer">投稿数が多い順</span>
+  </div>
+  <div class="page-home-header__right">
+    <span class="btn-success"><%= link_to "ラジオ番組を登録する", new_radio_path, class: "link-white" %></span>
+  </div>
 </div>
 <div class="row">
   <%= render partial: "radios/list-home", locals: { radios: @radios }  %>

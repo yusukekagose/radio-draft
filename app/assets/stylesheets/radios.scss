@@ -9,9 +9,6 @@
 
 //new//////
 .radio-form {
-  margin: 5rem auto;
-  width: 60%;
-  padding: 2.5rem 2rem;
   &__title {
     font-size: 2.3rem;
     font-weight: 0.8;
@@ -57,6 +54,15 @@
     }
   }
 }
+.radio-new-container {
+  width: 60%;
+  margin: 0 auto;
+}
+@media (max-width: $bp-small) {
+  .radio-new-container {
+    width: 100%;
+  }
+}
 ///Show/////////////
 .radio-container {
   display: grid;
@@ -92,6 +98,15 @@
       -moz-border-radius: 0px;
     }
   }
+  .finished-segment {
+    margin-top: 1rem;
+  }
+  .delete-speaker-btn {
+    background: white;
+    padding: .45rem;
+    border-radius: 50%;
+    color: $color-primary;
+  }
 }
 @media (max-width: $bp-small) {
   .radio-container {
@@ -104,5 +119,8 @@
     &__content {
       margin-top: 1rem;
     }
+  }
+  .radio-edit-container {
+    width: 95%;
   }
 }
