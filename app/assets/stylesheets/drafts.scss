@@ -47,11 +47,11 @@
 ///Table//////
 .draft-table-row {
   display: grid;
-  grid-template-columns: 48% 25% 20% 7%;
+  grid-template-columns: 40% 25% 20% 9% 3%;
   > div {
     padding-left: 1rem;
   }
-  &:nth-child(even) {
+  &:nth-child(odd) {
     background: $color-primary-dark;
   }
 }

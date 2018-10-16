@@ -1,42 +1,57 @@
 
-<div class="user-show-container" style="margin-top: 3rem;">
+<div id="user-show" class="user-show-container" style="margin-top: 3rem;">
   <div class="">
     <div>下書き</div>
     <div>お気に入り</div>
     <div>スタッツ</div>
   </div>
+
+
   <div>
+    <div style="display: flex">
+      <div v-on:click="listDrafts" class="pointer mr-m">ALL</div>
+      <div v-on:click="orderByCreate" class="pointer mr-m">新着順</div>
+      <div v-on:click="orderByUpdate" class="pointer mr-m">更新順</div>
+      <div v-on:click="listDraftsDraft" class="pointer mr-m">下書き</div>
+      <div v-on:click="listDraftsSent" class="pointer">送信済み</div>
+    </div>
     <div class="draft-table-row draft-table-row-header">
       <div>下書き</div>
       <div>番組</div>
       <div>コーナー</div>
-      <div></div>
+      <div>Status</div>
     </div>
-    <% @drafts.each do |draft| %>
-    <div class="draft-table-row draft-table-row-content">
-      <div>
+    <div v-for="draft in drafts" class="draft-table-row draft-table-row-content">
+      <div >
         <div class="font-default pointer mb-sm">
-          <%= link_to edit_draft_path(draft),class: "link-black font-bold" do %>
-            <%= draft.title %>
-          <% end %>
+          <a v-bind:href="'/drafts/' + draft.id + '/edit'" class="link-black">
+            {{draft.title}}
+          </a>
         </div>
         <div class="word-wrap">
-          <%= draft.content %>
+          {{draft.content}}
         </div>
       </div>
       <div>
-        <%= link_to draft.radio.name, radio_path(draft.radio), class: "link-black" %>
+        <a v-bind:href="'/radios/' + draft.radio_id " class="link-black">
+          {{draft.radio_name}}
+        </a>
       </div>
       <div>
-        <% if draft.segment.present? %>
-          <%= draft.segment.name %>
-        <% end %>
+        {{draft.segment_name}}
       </div>
       <div>
-        <%= link_to edit_draft_path(draft),class: "link-black" do %><i class="fa fa-edit"></i><% end %>
+        <span v-bind:class="draft.status == 'draft' ? 'btn-primary-s' : 'btn-success-s' " @click.prevent="toggleDraft($event, draft.id)">
+          {{draft.status.toUpperCase()}}
+        </span>
+      </div>
+      <div>
+        <a v-bind:href="'/drafts/' + draft.id + '/edit'" class="link-black">
+          <i class="fa fa-edit "></i>
+        </a>
       </div>
     </div>
-    <% end %>
+
   </div>
 </div>
 

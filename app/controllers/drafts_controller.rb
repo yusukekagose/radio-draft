@@ -1,5 +1,12 @@
 class DraftsController < ApplicationController
-  before_action :set_draft, only: [:edit, :update]
+  before_action :set_draft, only: [:edit, :update, :toggle_status]
+  before_action :authenticate_user!, only: [:index]
+
+  skip_before_action :verify_authenticity_token
+
+  def index
+    @drafts = current_user.drafts
+  end
 
   def new
     @radio = Radio.find(params[:id])
@@ -27,6 +34,16 @@ class DraftsController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def toggle_status
+    if @draft.draft?
+      @draft.sent!
+    else
+      @draft.draft!
+    end
+
+    redirect_back(fallback_location: root_path)
   end
 
   private

@@ -13,6 +13,9 @@
 .mb-m {
   margin-bottom: 1rem;
 }
+.mt-m {
+  margin-top: 1rem;
+}
 .mt-l {
   margin-top: 2rem;
 }
@@ -170,11 +173,24 @@
   padding: 1rem 2rem;
   width: 100%;
 }
+.btn-primary-s {
+  @extend %btn;
+  background: $color-primary;
+  color: $color-white;
+  padding: 0.2rem .5rem;
+}
 .btn-success {
   @extend %btn;
   padding: .5rem 1.2rem;
   border-radius: 3px;
   margin-right: .5rem;
+  background: $color-green;
+}
+.btn-success-s {
+  @extend %btn;
+  background: $color-primary;
+  color: $color-white;
+  padding: 0.2rem .5rem;
   background: $color-green;
 }
 .btn-edit {

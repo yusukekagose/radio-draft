@@ -1,6 +1,23 @@
 import axios from 'axios';
 
+///DRAFTS/////////////////
+export function listDrafts (id) {
+    return axios.get(`/users/${id}/drafts.json`)
+           .then(function(response){
+                return response.data;
+            })
+}
+export function toggleDraft(id) {
+    event.stopImmediatePropagation();
 
+    return axios.patch(`/drafts/${id}/toggle_status.json`)
+        .then(function (response){
+            return response.data
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+}
 ///SEGMENTS///////////////
 export function listSegments (id) {
     return axios.get(`/radios/${id}/segments.json`)

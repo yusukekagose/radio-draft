@@ -72,6 +72,12 @@ document.addEventListener('turbolinks:load', () => {
           app.message = `Task ${response.id} created.`
         })
       },
+      toggleSegment: function(event, id) {
+        Api.toggleSegment(id).then(function(response){
+          app.listSegments();
+          app.message = `toggle status.`
+        })
+      },
       deleteSegment: function(event, id) {
         event.stopImmediatePropagation();
         let segmentIndex = this.segments.findIndex(item => item.id == id);

@@ -1,0 +1,11 @@
+json.array! @drafts do |draft|
+  json.id draft.id
+  json.title draft.title
+  json.content  draft.content
+  json.created_at draft.created_at
+  json.updated_at draft.updated_at
+  json.radio_name  draft.radio.name
+  json.radio_id  draft.radio_id
+  json.segment_name draft.segment&.name
+  json.status draft.status
+end

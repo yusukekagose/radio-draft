@@ -7,7 +7,11 @@ Rails.application.routes.draw do
              path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
              controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      resources :drafts, only: [:index]
+    end
+  end
 
   resources :radios, only: [:index, :show, :new, :create, :edit, :destroy, :update] do
     member do
@@ -26,7 +30,11 @@ Rails.application.routes.draw do
 
   # patch 'segment/:id/toggle_status', to: 'segments#toggle_status'
 
-  resources :drafts, only: [:edit, :update]
+  resources :drafts, only: [:edit, :update] do
+    member do
+      patch 'toggle_status', to: 'drafts#toggle_status'
+    end
+  end
 
   resources :dashboards, only: [:index]
 
