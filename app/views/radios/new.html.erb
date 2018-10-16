@@ -2,7 +2,7 @@
 <div class="font-bold font-l text-center mt-l">ラジオ番組を登録する</div>
 <%= form_for @radio, html: {class: 'radio-form', id: 'radio-form'} do |f| %>
   <div class="radio-form__field">
-    <%= f.text_field :name, placeholder: "名前",class: "radio-form__input" %>
+    <%= f.text_field :name, placeholder: "番組名",class: "radio-form__input" %>
   </div>
   <div class="radio-form__field">
     <%= f.text_field :url, placeholder: "番組ページURL",class: "radio-form__input" %>

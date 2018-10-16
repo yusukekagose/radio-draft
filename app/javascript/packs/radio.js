@@ -72,12 +72,17 @@ document.addEventListener('turbolinks:load', () => {
           app.message = `Task ${response.id} created.`
         })
       },
-      toggleSegment: function(event, id) {
+      deleteSegment: function(event, id) {
         event.stopImmediatePropagation();
-        Api.toggleSegment(id).then(function(response){
-          app.listSegments();
-          app.message = `Segment toggled.`
-        })
+        let segmentIndex = this.segments.findIndex(item => item.id == id);
+        let draft_count = this.segments[segmentIndex].draft_count
+
+        if(segmentIndex > -1 && !draft_count) {
+          Api.deleteSegment(id).then(function(response){
+            app.$delete(app.segments, segmentIndex)
+            app.message = `Segment ${id} deleted.`
+          });
+        }
       },
       createSpeaker: function(event) {
         Api.createSpeaker(this.speaker, this.radioId).then(function(response){

@@ -1,5 +1,5 @@
 class SegmentsController < ApplicationController
-
+  before_action :set_segment, only: [:toggle_status, :destroy]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -18,7 +18,6 @@ class SegmentsController < ApplicationController
   end
 
   def toggle_status
-    @segment = Segment.find(params[:id])
     if @segment.active?
       @segment.end!
     else
@@ -28,8 +27,20 @@ class SegmentsController < ApplicationController
     redirect_back(fallback_location: new_draft_path(@segment.radio_id))
   end
 
+  def destroy
+    if @segment.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
     def segment_params
       params.require(:segment).permit(:name, :radio_id)
+    end
+
+    def set_segment
+      @segment = Segment.find(params[:id])
     end
 end

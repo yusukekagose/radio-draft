@@ -18,7 +18,13 @@ Rails.application.routes.draw do
     end
   end
 
-  patch 'segment/:id/toggle_status', to: 'segments#toggle_status'
+  resources :segments, only: [:destroy] do
+    member do
+      patch 'toggle_status', to: 'segments#toggle_status'
+    end
+  end
+
+  # patch 'segment/:id/toggle_status', to: 'segments#toggle_status'
 
   resources :drafts, only: [:edit, :update]
 

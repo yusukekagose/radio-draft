@@ -31,7 +31,9 @@
     </div>
     <div class="mb-m">
       <span>コーナー</span>
-      <button class="btn-outline" v-on:click="toggleSegmentForm">{{btnSegment}}</button>
+      <button class="btn-outline" v-on:click="toggleSegmentForm">
+        {{btnSegment}}
+      </button>
     </div>
     <div class="mb-m">
       <form class="form" action="" v-if="showSegmentForm" v-on:submit.prevent="createSegment($event)">
@@ -44,6 +46,9 @@
       <span class="badge-primary" v-for="segment in activeSegments">
         {{ segment.name }}
         <span class="badge-danger pointer" @click.prevent="toggleSegment($event, segment.id)">終了</span>
+        <span v-if="!segment.draft_count" @click.prevent="deleteSegment($event, segment.id)" class="pointer delete-speaker-btn">
+          <i class="fa fa-times"></i>
+        </span>
       </span>
     </div>
     <div class="finished-segment">

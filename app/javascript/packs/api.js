@@ -20,10 +20,22 @@ export function createSegment(segment, id) {
             console.log(error);
         })
 }
+export function deleteSegment(segment_id) {
+    event.stopImmediatePropagation();
+
+    return axios.delete(`/segments/${segment_id}`)
+            .then(function(response){
+                return 'success'
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+}
+
 export function toggleSegment(id) {
     event.stopImmediatePropagation();
 
-    return axios.patch(`/segment/${id}/toggle_status.json`)
+    return axios.patch(`/segments/${id}/toggle_status.json`)
         .then(function (response){
             return response.data
         })
