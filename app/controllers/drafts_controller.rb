@@ -5,7 +5,7 @@ class DraftsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @drafts = current_user.drafts
+    @drafts = current_user.drafts.order(created_at: :desc)
   end
 
   def new

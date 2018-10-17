@@ -20,9 +20,7 @@
     </div>
     <div>
       出演者
-      <% radio.speakers.each do |speaker| %>
-        <span><%= speaker.name %></span>
-      <% end %>
+      <span class="font-sm"><%= truncate_user_name(radio.speakers) %></span>
     </div>
     <div>
       <i class="fa fa-file mr-m"></i><%= radio.drafts.count%>

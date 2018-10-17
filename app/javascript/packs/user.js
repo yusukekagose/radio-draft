@@ -11,7 +11,15 @@ document.addEventListener('turbolinks:load', () => {
         {
           name: ''
         },
+      search: '',
       userId: window.location.pathname.split('/')[2],
+    },
+    computed: {
+      filteredDrafts:function() {
+        return this.drafts.filter((draft) => {
+          return draft.keyword.match(this.search);
+        })
+      }
     },
     methods: {
       listDrafts: function() {

@@ -12,4 +12,12 @@ module ApplicationHelper
     username = current_user.name.nil? ? "anonymous#{User.last.id + 1}" : current_user.name
     return username
   end
+
+  def truncate_user_name(speakers)
+    speaker_names = ""
+    speakers.each do |speaker|
+      speaker_names << speaker.name + " "
+    end
+    speaker_names.truncate(30, omission: '...')
+  end
 end

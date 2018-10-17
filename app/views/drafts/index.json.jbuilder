@@ -8,4 +8,5 @@ json.array! @drafts do |draft|
   json.radio_id  draft.radio_id
   json.segment_name draft.segment&.name
   json.status draft.status
+  json.keyword draft.title + draft.content + draft.radio.name + draft.segment&.name.to_s
 end

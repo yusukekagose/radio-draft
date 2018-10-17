@@ -7,13 +7,16 @@
   </div>
 
 
-  <div>
-    <div style="display: flex">
+  <div class="user-show__tab">
+    <div class="mb-m" style="display: flex">
       <div v-on:click="listDrafts" class="pointer mr-m">ALL</div>
       <div v-on:click="orderByCreate" class="pointer mr-m">新着順</div>
       <div v-on:click="orderByUpdate" class="pointer mr-m">更新順</div>
       <div v-on:click="listDraftsDraft" class="pointer mr-m">下書き</div>
       <div v-on:click="listDraftsSent" class="pointer">送信済み</div>
+      <div style="margin-left: auto; display: flex;">
+        <input class="" type="text" placeholder="キーワード" v-model="search">
+      </div>
     </div>
     <div class="draft-table-row draft-table-row-header">
       <div>下書き</div>
@@ -21,7 +24,7 @@
       <div>コーナー</div>
       <div>Status</div>
     </div>
-    <div v-for="draft in drafts" class="draft-table-row draft-table-row-content">
+    <div v-for="draft in filteredDrafts" class="draft-table-row draft-table-row-content">
       <div >
         <div class="font-default pointer mb-sm">
           <a v-bind:href="'/drafts/' + draft.id + '/edit'" class="link-black">
