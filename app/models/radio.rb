@@ -16,8 +16,27 @@ class Radio < ApplicationRecord
     end
   end
 
-  def self.search param
-    param.strip!
+  def self.search keyword
+    keyword.strip!
+    keyword.downcase!
+
+    (search_by_name(keyword) + search_by_speakers(keyword) + search_by_station(keyword)).uniq
+  end
+
+  def self.search_by_station keyword
+    where(station: Station.where("lower(name) like ?", "%#{keyword}%"))
+  end
+
+  def self.search_by_speakers keyword
+    eager_load(:speakers).where("speakers.name like ?", "%#{keyword}%")
+  end
+
+  def self.search_by_name keyword
+    matches('name', keyword)
+  end
+
+  def self.matches(field_name, param)
+    where("#{field_name} like ?", "%#{param}%")
   end
 
 end

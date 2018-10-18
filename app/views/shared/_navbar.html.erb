@@ -4,12 +4,16 @@
     <div class="logo">
       <%= link_to "RadioDraft.com", root_path, class: "link-white" %>
     </div>
-    <form action="#" class="search">
-      <input type="text" class="search__input" placeholder="キーワード">
-      <button>
+
+    <%= form_tag root_path, method: :get, class: "search", style: "" do %>
+      <%= hidden_field_tag :order, params[:order] %>
+      <%= text_field_tag :keyword, params[:keyword], placeholder: "番組名・出演者・放送局", class: "search__input" %>
+      <%= button_tag type: "submit",  class: "search__input" do %>
         <i class="fa fa-search search__icon"></i>
-      </button>
-    </form>
+      <% end %>
+
+    <% end %>
+
     <% unless current_user %>
     <div class="" style="">
       <%= link_to "登録", new_user_registration_path, class: "login-btn link-white" %>

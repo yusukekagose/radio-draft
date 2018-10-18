@@ -18,6 +18,6 @@ module ApplicationHelper
     speakers.each do |speaker|
       speaker_names << speaker.name + " "
     end
-    speaker_names.truncate(30, omission: '...')
+    speaker_names.truncate(25, omission: '...')
   end
 end

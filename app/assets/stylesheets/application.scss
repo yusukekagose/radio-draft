@@ -72,9 +72,10 @@ html {
 
   .search {
     flex: 0 0 40%;
-
+    display: flex;
     button {
       border: none;
+      width: 10%;
       &:hover {
         cursor: pointer;
       }
@@ -195,6 +196,16 @@ html {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
+}
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 0;
+  }
 }
 @media (max-width: 480px) {
   .container {

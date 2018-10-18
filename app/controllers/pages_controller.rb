@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
 
   def home
-    @radios = Radio.all
+    if params[:keyword].present?
+      @radios = Radio.search(params[:keyword])
+    else
+      @radios = Radio.all
+    end
   end
 end
