@@ -4,6 +4,7 @@ class Radio < ApplicationRecord
   has_many :radio_speakers
   has_many :speakers, through: :radio_speakers
   has_many :segments
+  has_many :favorites
   accepts_nested_attributes_for :speakers
 
   validates :name, presence: true
@@ -14,6 +15,10 @@ class Radio < ApplicationRecord
       speaker = Speaker.find_or_create_by(speaker_attribute)
       self.speakers << speaker
     end
+  end
+
+  def self.order_by_drafts_count
+    joins(:drafts).group("radios.id").order("count(radios.id) DESC")
   end
 
   def self.search keyword

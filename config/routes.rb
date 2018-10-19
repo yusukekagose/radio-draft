@@ -19,8 +19,12 @@ Rails.application.routes.draw do
       resources :segments, only: [:index, :create]
       resources :speakers, only: [:index, :create]
       delete 'speaker/:speaker_id', to: 'speakers#destroy_radio_speakers'
+      resources :favorites, only: [:create]
+      get 'info', to: 'favorites#info'
     end
   end
+
+  resources :favorites, only: [:destroy]
 
   resources :segments, only: [:destroy] do
     member do

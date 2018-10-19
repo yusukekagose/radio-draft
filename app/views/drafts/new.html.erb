@@ -34,7 +34,7 @@
   </div>
 
   <div class="">
-    <%= form_for @draft, url: drafts_path(@radio.id), html: {class: ''} do |f| %>
+    <%= form_for @draft, url: "/radios/#{@radio.id}/drafts", html: {class: ''} do |f| %>
       <div class="form-field">
         <select name="draft[segment_id]" class="form-select">
           <option selected disabled>コーナー</option>

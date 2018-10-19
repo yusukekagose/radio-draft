@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :drafts
+  has_many :favorites
 
   def self.new_with_session(params, session)
     super.tap do |user|

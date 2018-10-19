@@ -6,7 +6,15 @@
 @import "base/base";
 @import "base/utils";
 
-
+//Show/////
+.radio-show {
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: $big-font-size;
+  }
+}
 //new//////
 .radio-form {
   &__title {

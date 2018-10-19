@@ -93,3 +93,32 @@ export function deleteSpeaker(radio_id, speaker_id) {
                 console.log(error)
             })
 }
+
+//Favorite///////////////////
+export function createFavorite(radio_id) {
+    event.stopImmediatePropagation();
+    return axios.post(`/radios/${radio_id}/favorites.json`)
+        .then(function (response){
+            return response.data
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+}
+export function deleteFavorite(id) {
+    event.stopImmediatePropagation();
+    return axios.delete(`/favorites/${id}.json`)
+        .then(function (response){
+            return response.data
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+}
+
+export function FavoriteInfo (radioId) {
+    return axios.get(`/radios/${radioId}/info.json`)
+           .then(function(response){
+                return response.data;
+            })
+}

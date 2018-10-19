@@ -25,7 +25,7 @@ gem 'omniauth-facebook', '~> 5.0'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 #icons
-gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 #webpack to use Vue
 gem 'webpacker'

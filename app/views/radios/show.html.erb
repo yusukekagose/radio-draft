@@ -1,6 +1,11 @@
-<div class="container radio-show" style="margin-top: 3rem;">
-  <div style="margin-bottom: 2rem;">
-    <h2><%= @radio.name %></h2>
+<div id="radio-show" class="container radio-show" style="margin-top: 3rem;">
+  <div class="radio-show__header">
+    <div><%= @radio.name %></div>
+    <div id="favorite" class="ml-auto">
+      <i v-if="!is_favorite" @click.prevent="createFavorite($event)" class="far fa-star pointer"></i>
+      <i v-if="is_favorite" @click.prevent="deleteFavorite($event, favoriteId)" class="fas fa-star pointer cl-yellow"></i>
+      <span>{{count}}</span>
+    </div>
   </div>
   <div class="radio-container">
     <div class="radio-container__img" style="">
@@ -28,4 +33,4 @@
   </div>
 </div>
 
-
+<%= javascript_pack_tag 'favorite' %>

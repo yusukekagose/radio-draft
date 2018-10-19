@@ -13,7 +13,6 @@ class RadiosController < ApplicationController
 
   def create
     @radio = Radio.new(radio_params)
-    puts radio_params
     if @radio.save
       redirect_to request.referrer, notice: 'success'
     else

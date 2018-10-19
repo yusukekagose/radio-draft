@@ -1,6 +1,7 @@
 <div class="page-home-header">
   <div class="page-home-header__left">
-    <span class="mr-l pointer">人気順</span><span class="mr-l pointer">投稿数が多い順</span>
+    <%= link_to "人気順", url_for(keyword: params[:keyword], order: "popular"), class: "mr-l pointer link-black" %>
+    <%= link_to "投稿数が多い順", url_for(keyword: params[:keyword], order: "number"), class: "mr-l pointer link-black" %>
   </div>
   <div class="page-home-header__right">
     <span class="btn-success"><%= link_to "ラジオ番組を登録する", new_radio_path, class: "link-white" %></span>

@@ -116,4 +116,5 @@ document.addEventListener('turbolinks:load', () => {
       this.listSegments(this.radioId);
     }
   })
+
 })

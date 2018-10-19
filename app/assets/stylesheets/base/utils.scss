@@ -1,5 +1,19 @@
 @import "base/variables";
 
+//List/////////////
+.list {
+  list-style: none;
+  .fas {
+    width: 10%;
+  }
+  &__item {
+    padding: .5rem;
+    cursor: pointer;
+  }
+  .active {
+    color: $color-primary;
+  }
+}
 //Margin///////////
 .mr-m {
   margin-right: 1rem;
@@ -18,6 +32,9 @@
 }
 .mt-l {
   margin-top: 2rem;
+}
+.ml-auto {
+  margin-left: auto;
 }
 .word-wrap {
   word-wrap: break-word;
@@ -83,6 +100,9 @@
 }
 .cl-black {
   color: $color-black !important;
+}
+.cl-yellow {
+  color: $color-yellow !important;
 }
 //BackGround///
 .bg-primary {
