@@ -6,8 +6,6 @@ class FavoritesController < ApplicationController
   def info
     @radio = Radio.find(params[:id])
     @count = Favorite.where(radio_id: @radio.id).count
-    @favorite_id = Favorite.where(radio_id: @radio.id, user_id: current_user.id).ids.first
-    @is_favorite = Favorite.where(radio_id: @radio.id, user_id: current_user.id).present?
   end
 
   def create

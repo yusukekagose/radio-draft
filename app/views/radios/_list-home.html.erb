@@ -22,8 +22,13 @@
       出演者
       <span class="font-sm"><%= truncate_user_name(radio.speakers) %></span>
     </div>
-    <div>
-      <i class="fa fa-file mr-m"></i><%= radio.drafts.count%>
+    <div class="font-sm">
+      <span>
+        <i class="fa fa-file mr-m cl-light-gray"></i><%= radio.drafts.count%>
+      </span>
+      <span>
+        <i class="fa fa-star mr-m cl-light-gray"></i><%= Favorite.where(radio_id: radio.id).count %>
+      </span>
     </div>
   </div>
   <div class="card__footer">

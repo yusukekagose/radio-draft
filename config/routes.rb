@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     member do
       resources :drafts, only: [:index]
+      get 'favorites', to: 'users#favorites'
     end
   end
 

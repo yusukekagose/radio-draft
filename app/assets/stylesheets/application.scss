@@ -198,6 +198,11 @@ html {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
 }
+.row-4-column {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
 @media (max-width: $bp-largest) {
   .container {
     width: 90%;
@@ -212,12 +217,7 @@ html {
     grid-template-columns: 100%;
     grid-gap: 0;
   }
-}
-@media (max-width: 480px) {
-  .container {
-    width: 100%;
-  }
-  .row {
+  .row-4-column {
     display: grid;
     grid-template-columns: 100%;
     grid-gap: 0;
@@ -339,3 +339,6 @@ html {
   }
 }
 
+.card-favorite {
+  grid-template-rows: 150px 30px auto;
+}

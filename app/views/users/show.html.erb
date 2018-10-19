@@ -1,24 +1,18 @@
 
 <div id="user-show" class="user-show-container" style="margin-top: 3rem;">
-  <div class="">
-    <ul class="list">
-      <li class="list__item active">
-        <i class="fas fa-file mr-m"></i>Drafts
-        <span class="badge-primary">{{drafts.length}}</span></li>
-      <li class="list__item"><i class="fas fa-star mr-m"></i>お気に入り</li>
-      <li class="list__item"><i class="fas fa-chart-bar mr-m"></i>Stats</li>
-    </ul>
+  <div class="user-show-sidebar">
+    <%= render "users/sidebar" %>
   </div>
 
 
-  <div class="user-show__tab">
-    <div class="mb-m" style="display: flex">
+  <div class="">
+    <div class="user-show__tab mb-m" style="display: flex">
       <div v-on:click="listDrafts" class="pointer mr-m">ALL</div>
       <div v-on:click="orderByCreate" class="pointer mr-m">新着順</div>
       <div v-on:click="orderByUpdate" class="pointer mr-m">更新順</div>
       <div v-on:click="listDraftsDraft" class="pointer mr-m">下書き</div>
       <div v-on:click="listDraftsSent" class="pointer">送信済み</div>
-      <div style="margin-left: auto; display: flex;">
+      <div class="ml-auto">
         <input class="" type="text" placeholder="キーワード" v-model="search">
       </div>
     </div>

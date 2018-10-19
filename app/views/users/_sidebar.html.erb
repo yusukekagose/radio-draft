@@ -1,0 +1,19 @@
+<ul class="list">
+  <% active = current_page?(user_path(current_user)) ? "active" : ""   %>
+  <li class="list__item">
+    <%= link_to user_path(current_user), class: "link-black #{active}" do %>
+      <i class="fas fa-file mr-m"></i>
+      <span class="<%= active %>">Drafts</span>
+      <span class="badge-primary"><%= @count_drafts %></span>
+    <% end %>
+  </li>
+  <% active = current_page?(favorites_user_path(current_user)) ? "active" : ""   %>
+  <li class="list__item">
+  <%= link_to favorites_user_path(current_user), class: "link-black #{active}" do %>
+    <i class="fas fa-star mr-m"></i>
+    <span>お気に入り</span>
+    <span class="badge-primary"><%= @count_favorites %></span>
+  <% end %>
+  </li>
+  <!-- <li class="list__item"><i class="fas fa-chart-bar mr-m"></i>Stats</li> -->
+</ul>

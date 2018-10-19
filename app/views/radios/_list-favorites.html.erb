@@ -1,0 +1,27 @@
+<% radios.each do |radio|%>
+<div class="card card-favorite pointer">
+  <div class="card__img">
+    <%= link_to radio_path(radio), class: "link-black" do %>
+      <% if radio.img %>
+      <%= image_tag(radio.img, :alt => "img", :class => "img") %>
+      <% else %>
+      <%= image_tag("no-img.png", :alt => "img", :class => "img") %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="card__content">
+    <div>
+      <h4 class="link-black text-center d-none-s">
+        <%= link_to radio.name.truncate(15, omission: '...'), radio_path(radio), class: "link-black " %>
+      </h4>
+      <h4 class="link-black d-s">
+        <%= link_to radio.name, radio_path(radio), class: "link-black" %>
+      </h4>
+    </div>
+  </div>
+  <div class="card__footer">
+    <%= link_to "ハガキを書く", new_draft_path(radio), class: "btn link-white" %>
+  </div>
+</div>
+
+<% end %>
