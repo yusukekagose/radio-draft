@@ -39,6 +39,11 @@
 .word-wrap {
   word-wrap: break-word;
 }
+@media (max-width: $bp-small) {
+  .mr-l {
+    margin-right: 1rem;
+  }
+}
 /////DROPDOWN////////
 .dropbtn {
   font-size: $default-font-size;
@@ -98,6 +103,9 @@
   font-weight: bold;
 }
 //Color///
+.cl-primary {
+  color: $color-primary !important;
+}
 .cl-white {
   color: $color-white !important;
 }

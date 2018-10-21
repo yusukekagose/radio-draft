@@ -21,6 +21,10 @@ class Radio < ApplicationRecord
     joins(:drafts).group("radios.id").order("count(radios.id) DESC")
   end
 
+  def self.order_by_favorites_count
+    joins(:favorites).group("radios.id").order("count(radios.id) DESC")
+  end
+
   def self.search keyword
     keyword.strip!
     keyword.downcase!

@@ -7,11 +7,11 @@
 
   <div class="">
     <div class="user-show__tab mb-m" style="display: flex">
-      <div v-on:click="listDrafts" class="pointer mr-m">ALL</div>
-      <div v-on:click="orderByCreate" class="pointer mr-m">新着順</div>
-      <div v-on:click="orderByUpdate" class="pointer mr-m">更新順</div>
-      <div v-on:click="listDraftsDraft" class="pointer mr-m">下書き</div>
-      <div v-on:click="listDraftsSent" class="pointer">送信済み</div>
+      <div v-on:click="listDrafts" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTab === 'all' }">ALL</div>
+      <div v-on:click="listDraftsDraft" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTab === 'draft' }">下書き</div>
+      <div v-on:click="listDraftsSent" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTab === 'sent' }">送信済み</div>
+      <div v-on:click="orderByCreate" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTabOrder === 'new' }">新着順</div>
+      <div v-on:click="orderByUpdate" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTabOrder === 'update' }">更新順</div>
       <div class="ml-auto">
         <input class="" type="text" placeholder="キーワード" v-model="search">
       </div>

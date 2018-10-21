@@ -12,6 +12,8 @@ document.addEventListener('turbolinks:load', () => {
           name: ''
         },
       search: '',
+      userShowTab: 'all',
+      userShowTabOrder: 'new',
       userId: window.location.pathname.split('/')[2],
     },
     computed: {
@@ -23,16 +25,19 @@ document.addEventListener('turbolinks:load', () => {
     },
     methods: {
       listDrafts: function() {
+        this.userShowTab = 'all'
         Api.listDrafts(this.userId).then(function(response){
             app.drafts = response;
         })
       },
       listDraftsDraft: function() {
+        this.userShowTab = 'draft'
         Api.listDrafts(this.userId).then(function(response){
             app.drafts = response.filter( item => item.status == "draft" );
         })
       },
       listDraftsSent: function() {
+        this.userShowTab = 'sent'
         Api.listDrafts(this.userId).then(function(response){
             app.drafts = response.filter( item => item.status == "sent" );
         })
@@ -44,11 +49,13 @@ document.addEventListener('turbolinks:load', () => {
         })
       },
       orderByCreate: function() {
+        this.userShowTabOrder = 'new'
         this.drafts.sort(function(a, b) {
           return new Date(a.create_at) - new Date(b.create_at);
         }).reverse();
       },
       orderByUpdate: function() {
+        this.userShowTabOrder = 'update'
         this.drafts.sort(function(a, b) {
           return new Date(a.updated_at) - new Date(b.updated_at);
         }).reverse();

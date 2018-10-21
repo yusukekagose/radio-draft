@@ -1,7 +1,11 @@
 <div class="page-home-header">
   <div class="page-home-header__left">
-    <%= link_to "人気順", url_for(keyword: params[:keyword], order: "popular"), class: "mr-l pointer link-black" %>
-    <%= link_to "投稿数が多い順", url_for(keyword: params[:keyword], order: "number"), class: "mr-l pointer link-black" %>
+    <% active = params[:order] == "all" || !params[:order].present? ? "cl-primary" : "" %>
+    <%= link_to "ALL", url_for(keyword: params[:keyword], order: "all"), class: "mr-l pointer link-black #{active}" %>
+    <% active = params[:order] == "popular" ? "cl-primary" : "" %>
+    <%= link_to "人気順", url_for(keyword: params[:keyword], order: "popular"), class: "mr-l pointer link-black #{active}" %>
+    <% active = params[:order] == "number" ? "cl-primary" : "" %>
+    <%= link_to "投稿数が多い順", url_for(keyword: params[:keyword], order: "number"), class: "mr-l pointer link-black #{active}" %>
   </div>
   <div class="page-home-header__right">
     <span class="btn-success"><%= link_to "ラジオ番組を登録する", new_radio_path, class: "link-white" %></span>
