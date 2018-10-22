@@ -2,8 +2,6 @@ class DraftsController < ApplicationController
   before_action :set_draft, only: [:edit, :update, :toggle_status]
   before_action :authenticate_user!, only: [:index]
 
-  skip_before_action :verify_authenticity_token
-
   def index
     @drafts = current_user.drafts.order(created_at: :desc)
   end

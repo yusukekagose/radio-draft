@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken
+
 ///DRAFTS/////////////////
 export function listDrafts (id) {
     return axios.get(`/users/${id}/drafts.json`)

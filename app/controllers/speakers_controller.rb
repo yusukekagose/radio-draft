@@ -1,6 +1,5 @@
 class SpeakersController < ApplicationController
   before_action :set_radio, only: [:index, :create, :destroy_radio_speakers]
-  skip_before_action :verify_authenticity_token
 
   def index
     @speakers = @radio.speakers

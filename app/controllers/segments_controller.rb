@@ -1,6 +1,5 @@
 class SegmentsController < ApplicationController
   before_action :set_segment, only: [:toggle_status, :destroy]
-  skip_before_action :verify_authenticity_token
 
   def index
     @segments = Radio.find(params[:id]).segments
