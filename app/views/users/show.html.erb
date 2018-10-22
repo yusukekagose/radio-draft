@@ -1,17 +1,17 @@
 
-<div id="user-show" class="user-show-container" style="margin-top: 3rem;">
+<div id="user-show" class="user-show-container">
   <div class="user-show-sidebar">
     <%= render "users/sidebar" %>
   </div>
 
 
-  <div class="">
+  <div class="user-show-container__table">
     <div class="user-show__tab mb-m" style="display: flex">
       <div v-on:click="listDrafts" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTab === 'all' }">ALL</div>
       <div v-on:click="listDraftsDraft" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTab === 'draft' }">下書き</div>
       <div v-on:click="listDraftsSent" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTab === 'sent' }">送信済み</div>
-      <div v-on:click="orderByCreate" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTabOrder === 'new' }">新着順</div>
-      <div v-on:click="orderByUpdate" class="pointer mr-m" v-bind:class="{ 'cl-primary': userShowTabOrder === 'update' }">更新順</div>
+      <div v-on:click="orderByCreate" class="pointer mr-m d-none-s" v-bind:class="{ 'cl-primary': userShowTabOrder === 'new' }">新着順</div>
+      <div v-on:click="orderByUpdate" class="pointer mr-m d-none-s" v-bind:class="{ 'cl-primary': userShowTabOrder === 'update' }">更新順</div>
       <div class="ml-auto">
         <input class="" type="text" placeholder="キーワード" v-model="search">
       </div>
@@ -20,11 +20,11 @@
       <div>下書き</div>
       <div>番組</div>
       <div>コーナー</div>
-      <div>Status</div>
+      <div class="d-none-s">Status</div>
     </div>
     <div v-for="draft in filteredDrafts" class="draft-table-row draft-table-row-content">
       <div >
-        <div class="font-default pointer mb-sm">
+        <div class="font-default pointer mb-sm word-wrap">
           <a v-bind:href="'/drafts/' + draft.id + '/edit'" class="link-black">
             {{draft.title}}
           </a>
@@ -41,7 +41,7 @@
       <div>
         {{draft.segment_name}}
       </div>
-      <div>
+      <div class="d-none-s">
         <span v-bind:class="draft.status == 'draft' ? 'btn-primary-s' : 'btn-success-s' " @click.prevent="toggleDraft($event, draft.id)">
           {{draft.status.toUpperCase()}}
         </span>

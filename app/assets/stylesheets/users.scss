@@ -1,12 +1,10 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "base/variables";
 
 .user-show-container {
   display: grid;
   grid-template-columns: 20% 75%;
   grid-gap: 50px;
+  margin-top: 3rem;
   &__tab {
     display: flex;
     align-items: center;
@@ -20,3 +18,19 @@
   }
 }
 
+@media (max-width: $bp-small) {
+  .user-show-container {
+    display: block;
+    margin-top: 1.5rem;
+    &__table {
+      width: 95%;
+      margin: 0 auto;
+    }
+    .list {
+      display: flex;
+      width: 95%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
+  }
+}
