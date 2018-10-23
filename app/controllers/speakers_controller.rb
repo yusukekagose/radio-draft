@@ -23,11 +23,7 @@ class SpeakersController < ApplicationController
     speaker = @radio.speakers.find(params[:speaker_id])
 
     if speaker
-      if @radio.speakers.delete(speaker)
-        redirect_back(fallback_location: edit_radio_path(params[:id]))
-      else
-        redirect_back(fallback_location: edit_radio_path(params[:id]))
-      end
+      @radio.speakers.delete(speaker)
     end
   end
 

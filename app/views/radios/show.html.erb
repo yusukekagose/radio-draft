@@ -2,6 +2,8 @@
   <div class="radio-show__header">
     <div><%= @radio.name %></div>
     <div id="favorite" class="ml-auto">
+      <span v-if="!is_favorite" class="font-sm">お気に入り登録</span>
+      <span v-if="is_favorite" class="font-sm font-bold">I’m lovin’ it</span>
       <i v-if="!is_favorite" @click.prevent="createFavorite($event)" class="far fa-star pointer"></i>
       <i v-if="is_favorite" @click.prevent="deleteFavorite($event, favoriteId)" class="fas fa-star pointer cl-yellow"></i>
       <span>{{count}}</span>
@@ -22,7 +24,7 @@
           <span class="mr-m"><%= speaker.name %></span>
         <% end %>
       </div>
-      <div>
+      <div class="mb-m">
         番組HP
         <%= link_to @radio.url, @radio.url, target: "blank", class: "link-black" %>
       </div>

@@ -51,9 +51,31 @@
           <i class="fa fa-edit "></i>
         </a>
       </div>
+      <div>
+        <i class="fas fa-trash pointer" v-on:click="toggleModal(draft.id)"></i>
+      </div>
     </div>
 
   </div>
+  <!-- Modal content -->
+    <div v-if="modalToggle" id="deleteDraftModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-text text-center">
+          本当に消去しますか?
+        </div>
+        <div class="modal-question">
+          <div class="text-center">
+            <span class="btn-cancel" v-on:click="clearModal">やめる</span>
+          </div>
+          <div class="text-center">
+            <span class="btn-danger" @click.prevent="deleteDraft($event, draftId)">
+              消去する
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- end -->
 </div>
 
 

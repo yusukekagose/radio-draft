@@ -23,15 +23,11 @@ class SegmentsController < ApplicationController
       @segment.active!
     end
 
-    redirect_back(fallback_location: new_draft_path(@segment.radio_id))
+    # redirect_back(fallback_location: new_draft_path(@segment.radio_id))
   end
 
   def destroy
-    if @segment.destroy
-      redirect_back(fallback_location: root_path)
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    @segment.destroy
   end
 
   private

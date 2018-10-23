@@ -1,6 +1,7 @@
 class DraftsController < ApplicationController
-  before_action :set_draft, only: [:edit, :update, :toggle_status]
-  before_action :authenticate_user!, only: [:index]
+  before_action :set_draft, only: [:edit, :update, :destroy, :toggle_status]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
+  before_action :is_author, only: [:edit, :update, :destroy]
 
   def index
     @drafts = current_user.drafts.order(created_at: :desc)
@@ -34,6 +35,10 @@ class DraftsController < ApplicationController
     end
   end
 
+  def destroy
+    @draft.destroy
+  end
+
   def toggle_status
     if @draft.draft?
       @draft.sent!
@@ -51,5 +56,12 @@ class DraftsController < ApplicationController
 
     def draft_params
       params.require(:draft).permit(:title, :content, :segment_id).merge(user_id: current_user.id)
+    end
+
+    def is_author
+      @draft = Draft.find(params[:id])
+      unless @draft.user_id = current_user.id
+        redirect_to root_path
+      end
     end
 end

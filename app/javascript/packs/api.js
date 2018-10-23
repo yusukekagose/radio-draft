@@ -21,6 +21,16 @@ export function toggleDraft(id) {
             console.log(error);
         })
 }
+export function deleteDraft(id) {
+
+    return axios.delete(`/drafts/${id}`)
+            .then(function(response){
+                return 'success'
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+}
 ///SEGMENTS///////////////
 export function listSegments (id) {
     return axios.get(`/radios/${id}/segments.json`)

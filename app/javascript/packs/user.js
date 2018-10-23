@@ -7,6 +7,7 @@ document.addEventListener('turbolinks:load', () => {
     el: '#user-show',
     data: {
       drafts: [],
+      draftId: '',
       segment:
         {
           name: ''
@@ -15,6 +16,7 @@ document.addEventListener('turbolinks:load', () => {
       userShowTab: 'all',
       userShowTabOrder: 'new',
       userId: window.location.pathname.split('/')[2],
+      modalToggle: false,
     },
     computed: {
       filteredDrafts:function() {
@@ -48,6 +50,27 @@ document.addEventListener('turbolinks:load', () => {
           app.message = `toggle status.`
         })
       },
+      deleteDraft: function(event, id) {
+        event.stopImmediatePropagation();
+
+        let draftIndex = this.drafts.findIndex(item => item.id == id);
+
+        if(draftIndex > -1) {
+          Api.deleteDraft(id).then(function(response){
+            app.$delete(app.drafts, draftIndex)
+            app.modalToggle = false
+            app.message = `Draft ${id} deleted.`
+          });
+        }
+      },
+      toggleModal: function(id) {
+        this.draftId = id
+        if(this.modalToggle) {
+          this.modalToggle = false
+        } else {
+          this.modalToggle = true
+        }
+      },
       orderByCreate: function() {
         this.userShowTabOrder = 'new'
         this.drafts.sort(function(a, b) {
@@ -59,6 +82,9 @@ document.addEventListener('turbolinks:load', () => {
         this.drafts.sort(function(a, b) {
           return new Date(a.updated_at) - new Date(b.updated_at);
         }).reverse();
+      },
+      clearModal: function() {
+        this.modalToggle = false
       },
     },
     beforeMount(){ this.listDrafts(this.userId) }

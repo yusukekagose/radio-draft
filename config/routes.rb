@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   # patch 'segment/:id/toggle_status', to: 'segments#toggle_status'
 
-  resources :drafts, only: [:edit, :update] do
+  resources :drafts, only: [:edit, :update, :destroy] do
     member do
       patch 'toggle_status', to: 'drafts#toggle_status'
     end
