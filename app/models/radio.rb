@@ -9,6 +9,23 @@ class Radio < ApplicationRecord
 
   validates :name, presence: true
 
+  after_create :get_img
+
+  def get_img
+    options = {}
+    options[:searchType] = "image"
+    radio_name = self.name + "ラジオ"
+
+    results = GoogleCustomSearchApi.search(radio_name, options)
+    begin
+      img = results.items[1].link
+    rescue => e
+      img = ""
+    end
+
+    self.update(img: img)
+  end
+
   #create speaker only when speaker does'n exist
   def speakers_attributes=(speaker_attributes)
     speaker_attributes.values.each do |speaker_attribute|

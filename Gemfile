@@ -16,6 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+# For Google img search
+gem 'google_custom_search_api', '~> 2.0'
+
 #login funtion
 gem 'devise', '~> 4.5'
 gem 'omniauth', '~> 1.8', '>= 1.8.1'
