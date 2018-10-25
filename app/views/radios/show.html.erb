@@ -28,8 +28,16 @@
         番組HP
         <%= link_to @radio.url, @radio.url, target: "blank", class: "link-black" %>
       </div>
-      <div>
+      <div class="mb-m">
+        <%= link_to "ハガキを書く", new_draft_path(@radio), class: "btn-primary-sm link-white" %>
+      </div>
+      <div class="mb-m">
         <%= link_to "番組情報を編集する", edit_radio_path(@radio), class: "btn-edit link-white" %>
+      </div>
+      <div>
+        <%= link_to img_radio_path(@radio), class: "link-black" do %>
+          <span class="mr-m">画像再取得</span><i class="fas fa-download"></i>
+        <% end %>
       </div>
     </div>
   </div>

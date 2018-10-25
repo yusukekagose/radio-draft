@@ -1,0 +1,8 @@
+<div id="message" class="text-center pointer" v-if="messageShow" v-on:click="clickAnywhere">
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+</div>

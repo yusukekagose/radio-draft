@@ -43,6 +43,23 @@ html {
     display: none;
   }
 }
+/////Message//////////
+#message {
+  background: $color-green;
+  width: 50%;
+  margin: 1rem auto;
+  font-size: $ml-font-size;
+  color: $color-grey-dark;
+  border-radius: 5px;
+  p {
+    padding: 1rem;
+  }
+}
+@media (max-width: $bp-small) {
+  #message {
+    width: 80%;
+  }
+}
 ////////HOME LAYOUT///
 .home-container {
   margin: 3rem 0 3rem;

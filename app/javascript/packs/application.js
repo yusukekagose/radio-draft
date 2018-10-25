@@ -7,4 +7,25 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-console.log('Hello World from Webpacker')
+import Vue from 'vue/dist/vue.js';
+
+const Api = require('./api')
+
+document.addEventListener('turbolinks:load', () => {
+  var app = new Vue({
+    el: '#message',
+    data: {
+      messageShow: true,
+    },
+    computed: {
+    },
+    methods: {
+      clickAnywhere: function() {
+        setTimeout(() => {
+            this.messageShow = false;
+        }, 1000);
+      },
+    },
+
+  })
+})

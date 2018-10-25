@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       delete 'speaker/:speaker_id', to: 'speakers#destroy_radio_speakers'
       resources :favorites, only: [:create]
       get 'info', to: 'favorites#info'
+      get 'img', to: 'radios#get_img'
     end
   end
 
