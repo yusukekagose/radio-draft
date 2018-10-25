@@ -167,7 +167,27 @@ html {
     margin-right: .5rem;
   }
 }
-
+///FOOTER
+.footer {
+  padding: 3rem 0;
+  margin-top: 5rem;
+  background: $color-black-light;
+  color: $color-white;
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+@media (max-width: $bp-small) {
+  .footer {
+    text-align: center;
+  }
+}
 ////AVATAR////
 .avatar-small {
   width: 28px;
