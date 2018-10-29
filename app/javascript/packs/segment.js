@@ -6,7 +6,7 @@ const Api = require('./api')
 
 document.addEventListener('turbolinks:load', () => {
   var app = new Vue({
-    el: '#segment-form',
+    el: '#segment',
     data: {
       segments: [],
       segment:

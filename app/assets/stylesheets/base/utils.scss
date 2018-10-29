@@ -246,6 +246,12 @@
   padding: .5rem 1rem;
   background: $color-yellow;
 }
+.btn-back-and-forth {
+  @extend %btn;
+  padding: .5rem 1rem;
+  background: $color-primary;
+  color: $color-white;
+}
 ///Img///
 .img {
   width: 100%;
