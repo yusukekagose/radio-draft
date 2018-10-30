@@ -28,7 +28,7 @@ document.addEventListener('turbolinks:load', () => {
       userId: window.location.pathname.split('/')[2],
       modalToggle: false,
       pageNumber: 0,
-      pageSize: 50,
+      pageSize: 20,
       visibleNextButton: true,
 
     },
@@ -42,6 +42,22 @@ document.addEventListener('turbolinks:load', () => {
         return this.drafts.filter((draft) => {
           return draft.keyword.match(this.search);
         }).slice(start, end);
+      },
+      vPagination: function() {
+        return this.drafts.filter((draft) => {
+          return draft.keyword.match(this.search);
+        }).length > this.pageSize
+      },
+      pageCount: function(){
+        let l = this.drafts.length,
+            s = this.pageSize;
+        return Math.floor(l/s);
+      },
+      vNext: function() {
+        const draftNumber = this.drafts.filter((draft) => {
+          return draft.keyword.match(this.search);
+        }).length
+        return draftNumber/(this.pageSize * (this.pageNumber  + 1)) <= 1
       }
     },
     methods: {
@@ -50,23 +66,9 @@ document.addEventListener('turbolinks:load', () => {
       },
       prevPage: function() {
         this.pageNumber--;
-        this.visibleNext();
       },
       nextPage: function() {
         this.pageNumber++;
-        this.visibleNext();
-      },
-      visibleNext: function() {
-        if (this.pageNumber == 0 || this.drafts.length/((this.pageSize + 1) * this.pageNumber) > 1) {
-          this.visibleNextButton = true
-        } else {
-          this.visibleNextButton = false
-        }
-      },
-      pageCount: function(){
-        let l = this.drafts.length,
-            s = this.pageSize;
-        return Math.floor(l/s);
       },
       listDrafts: function() {
         this.userShowTab = 'all'

@@ -56,15 +56,14 @@
         <i class="fas fa-trash pointer" v-on:click="toggleModal(draft.id)"></i>
       </div>
     </div>
-    <div v-if="filteredDrafts.length >= this.pageSize" class="mt-m">
+    <div v-if="vPagination" class="mt-m">
       <button v-if="!this.pageNumber < 1 " @click="prevPage" class="btn-back-and-forth">
         Previous
       </button>
-      <button  v-if="this.visibleNextButton && this.drafts.length > this.pageSize" @click="nextPage" class="btn-back-and-forth">
+      <button  v-if="!vNext" @click="nextPage" class="btn-back-and-forth">
         Next
       </button>
     </div>
-
   </div>
   <!-- Modal content -->
     <div v-if="modalToggle" id="deleteDraftModal" class="modal">

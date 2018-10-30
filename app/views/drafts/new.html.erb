@@ -1,5 +1,5 @@
 
-<div id="segment" class="draft-new-container">
+<div id="draft-new" class="draft-new-container">
   <div class="draft-new__header">
     <div class="draft-new__header__img">
       <% if @radio.img %>
@@ -23,10 +23,10 @@
         <button class="btn-outline" v-on:click="toggleForm" v-if="showButton">{{btnSegment}}</button>
       </div>
       <div>
-        <span v-for="segment in segments" class="badge-primary">{{ segment.name }}</span>
+        <segment v-bind:segment="segment" v-for="segment in segments" />
       </div>
       <div class="">
-        <form class="form" action="" v-if="showForm" v-on:submit.prevent="createTask($event)">
+        <form class="form" action="" v-if="showForm" v-on:submit.prevent="createSegment($event)">
           <input class="form-control" type="text" v-model="segment.name">
           <button class="btn-primary">Submit</button>
         </form>
@@ -55,5 +55,5 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'segment' %>
+<%= javascript_pack_tag 'draft-new' %>
 

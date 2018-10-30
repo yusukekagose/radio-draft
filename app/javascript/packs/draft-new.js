@@ -1,12 +1,18 @@
 import Vue from 'vue/dist/vue.js';
-import Router from 'vue-router';
 
 const Api = require('./api')
 
 
 document.addEventListener('turbolinks:load', () => {
   var app = new Vue({
-    el: '#segment',
+    el: '#draft-new',
+    components: {
+            "segment": {  props: ["segment"],
+                          template: `
+                            <span class="badge-primary">{{ segment.name }}</span>
+                          `
+                       },
+    },
     data: {
       segments: [],
       segment:
@@ -35,7 +41,7 @@ document.addEventListener('turbolinks:load', () => {
           this.btnSegment = "追加"
         }
       },
-      createTask: function(event) {
+      createSegment: function(event) {
         Api.createSegment(this.segment, this.radioId).then(function(response){
           app.listSegments();
           app.clear();
@@ -46,4 +52,4 @@ document.addEventListener('turbolinks:load', () => {
     },
     beforeMount(){ this.listSegments(this.radioId) }
   })
-})
+});
