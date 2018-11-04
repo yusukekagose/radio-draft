@@ -1,9 +1,8 @@
 import Vue from 'vue/dist/vue.js';
-
 const Api = require('./api')
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   var app = new Vue({
     el: '#draft-new',
     components: {

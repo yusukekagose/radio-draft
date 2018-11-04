@@ -12,25 +12,26 @@ var filter = function(text, length, clamp){
 
 Vue.filter('truncate', filter);
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   var app = new Vue({
     el: '#user-show',
-    data: {
-      drafts: [],
-      draftId: '',
-      segment:
-        {
-          name: ''
-        },
-      search: '',
-      userShowTab: 'all',
-      userShowTabOrder: 'new',
-      userId: window.location.pathname.split('/')[2],
-      modalToggle: false,
-      pageNumber: 0,
-      pageSize: 20,
-      visibleNextButton: true,
-
+    data() {
+      return {
+        drafts: [],
+        draftId: '',
+        segment:
+          {
+            name: ''
+          },
+        search: '',
+        userShowTab: 'all',
+        userShowTabOrder: 'new',
+        userId: window.location.pathname.split('/')[2],
+        modalToggle: false,
+        pageNumber: 0,
+        pageSize: 20,
+        visibleNextButton: true,
+      }
     },
     computed: {
       filteredDrafts:function() {
@@ -118,7 +119,7 @@ document.addEventListener('turbolinks:load', () => {
       orderByCreate: function() {
         this.userShowTabOrder = 'new'
         this.drafts.sort(function(a, b) {
-          return new Date(a.create_at) - new Date(b.create_at);
+          return new Date(a.created_at) - new Date(b.created_at);
         }).reverse();
       },
       orderByUpdate: function() {

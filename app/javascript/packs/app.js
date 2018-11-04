@@ -4,7 +4,7 @@ import Router from 'vue-router';
 const Api = require('./api')
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   var app = new Vue({
     el: '#segment-form',
     data: {

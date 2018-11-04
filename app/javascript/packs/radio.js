@@ -2,27 +2,29 @@ import Vue from 'vue/dist/vue.js';
 
 const Api = require('./api')
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   var app = new Vue({
     el: '#radio-edit',
-    data: {
-      segments: [],
-      segment:
-        {
-          name: ''
-        },
-      speakers: [],
-      speaker:
-        {
-          name: ''
-        },
-      showSegmentForm: false,
-      showSegmentButton: true,
-      showSpeakerForm: false,
-      showSpeakerButton: true,
-      btnSegment: "追加",
-      btnSpeaker: "追加",
-      radioId: window.location.pathname.split('/')[2],
+    data() {
+      return {
+        segments: [],
+        segment:
+          {
+            name: ''
+          },
+        speakers: [],
+        speaker:
+          {
+            name: ''
+          },
+        showSegmentForm: false,
+        showSegmentButton: true,
+        showSpeakerForm: false,
+        showSpeakerButton: true,
+        btnSegment: "追加",
+        btnSpeaker: "追加",
+        radioId: window.location.pathname.split('/')[2],
+      }
     },
     computed: {
         finishedSegments :function() {
