@@ -1,6 +1,6 @@
 class DraftsController < ApplicationController
   before_action :set_draft, only: [:edit, :update, :destroy, :toggle_status]
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :is_author, only: [:edit, :update, :destroy]
 
   def index
