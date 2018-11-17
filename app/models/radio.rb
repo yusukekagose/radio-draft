@@ -1,5 +1,5 @@
 class Radio < ApplicationRecord
-  belongs_to :station
+  belongs_to :station, optional: true
   has_many :drafts
   has_many :radio_speakers
   has_many :speakers, through: :radio_speakers
