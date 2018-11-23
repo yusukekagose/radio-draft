@@ -95,6 +95,7 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     google_custom_search_api (2.0.0)
       addressable
       httparty
@@ -276,6 +277,7 @@ DEPENDENCIES
   devise (~> 4.5)
   figaro (~> 1.1, >= 1.1.1)
   font-awesome-sass (~> 5.4.1)
+  google-analytics-rails (~> 1.1, >= 1.1.1)
   google_custom_search_api (~> 2.0)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # For Google img search
 gem 'google_custom_search_api', '~> 2.0'
+#For Google analytics
+gem 'google-analytics-rails', '~> 1.1', '>= 1.1.1'
 
 #login funtion
 gem 'devise', '~> 4.5'
