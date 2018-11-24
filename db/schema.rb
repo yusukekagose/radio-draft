@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2018_10_19_000736) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "drafts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "radio_id"
-    t.integer "user_id"
+    t.bigint "radio_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "segment_id"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 2018_10_19_000736) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "radio_id"
+    t.bigint "user_id"
+    t.bigint "radio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["radio_id"], name: "index_favorites_on_radio_id"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_10_19_000736) do
     t.string "name"
     t.string "url"
     t.string "img"
-    t.integer "station_id"
+    t.bigint "station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["station_id"], name: "index_radios_on_station_id"
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 2018_10_19_000736) do
 
   create_table "segments", force: :cascade do |t|
     t.string "name"
-    t.integer "radio_id"
+    t.bigint "radio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
@@ -95,4 +98,10 @@ ActiveRecord::Schema.define(version: 2018_10_19_000736) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "drafts", "radios"
+  add_foreign_key "drafts", "users"
+  add_foreign_key "favorites", "radios"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "radios", "stations"
+  add_foreign_key "segments", "radios"
 end

@@ -32,7 +32,11 @@
     </div>
   </div>
   <div class="card__footer">
+    <% if current_user %>
     <%= link_to "ハガキを書く", new_draft_path(radio), class: "btn link-white" %>
+    <% else %>
+    <%= link_to "登録してハガキを書く", new_user_registration_path, class: "btn link-white" %>
+    <% end %>
   </div>
 </div>
 
