@@ -23,8 +23,8 @@ module ApplicationHelper
 
   def return_radio_names
     radio_names = ""
-    Radio.each do |item|
-      radios << item.name
+    Radio.all.each do |item|
+      radio_names << item.name
     end
     radio_names
   end
@@ -34,10 +34,10 @@ module ApplicationHelper
       title:       "title",
       description: "description",
       keywords:    "ラジオ,下書き, #{return_radio_names}",#キーワードを「,」で区切る
-      icon: [
-        { href: image_url('favicon.ico') },
-        { href: image_url('sample.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
-      ],
+      # icon: [
+      #   { href: image_url('favicon.ico') },
+      #   { href: image_url('sample.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+      # ],
       noindex: ! Rails.env.production?, # production環境以外はnoindex
       canonical: request.original_url,  # 優先されるurl
       charset: "UTF-8",
