@@ -37,6 +37,9 @@ gem 'font-awesome-sass', '~> 5.4.1'
 #webpack to use Vue
 gem 'webpacker'
 
+#meta tags
+gem 'meta-tags'
+
 #for many to many form
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
