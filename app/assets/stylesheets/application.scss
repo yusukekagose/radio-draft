@@ -43,6 +43,18 @@ html {
     display: none;
   }
 }
+/////AD///////////////
+#ad-footer {
+  padding: 2rem 0;
+  text-align: center;
+  .ad-container {
+    width: 80%;
+    margin: 0 auto;
+    @media (max-width: $bp-small) {
+      width: 100%;
+    }
+  }
+}
 /////Message//////////
 #message {
   background: $color-green;
