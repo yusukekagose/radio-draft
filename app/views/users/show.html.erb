@@ -45,7 +45,7 @@
       </div>
       <div class="d-none-s">
         <span v-bind:class="draft.status == 'draft' ? 'btn-primary-s' : 'btn-success-s' " @click.prevent="toggleDraft($event, draft.id)">
-          {{draft.status.toUpperCase()}}
+          {{draft.status == 'draft' ? '下書き' : '送信済み'}}
         </span>
       </div>
       <div>
