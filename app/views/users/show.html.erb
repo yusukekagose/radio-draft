@@ -1,4 +1,7 @@
 <div id="user-show" class="user-show-container">
+  <div v-show="loading" class="loader-container">
+    <div  class="loader">Now loading...</div>
+  </div>
   <div class="user-show-sidebar">
     <%= render "users/sidebar" %>
   </div>
@@ -23,7 +26,7 @@
     </div>
     <div v-for="draft in filteredDrafts" class="draft-table-row draft-table-row-content">
       <div >
-        <div class="font-default pointer mb-sm word-wrap">
+        <div v-if="draft.title.length > 0" class="font-default pointer mb-sm word-wrap">
           <a v-bind:href="'/drafts/' + draft.id + '/edit'" class="link-black">
             {{draft.title}}
           </a>

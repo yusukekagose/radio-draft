@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el: '#user-show',
     data() {
       return {
+        loading: true,
         drafts: [],
         draftId: '',
         segment:
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pageNumber: 0,
         pageSize: 20,
         visibleNextButton: true,
+
       }
     },
     computed: {
@@ -76,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Api.listDrafts(this.userId).then(function(response){
             app.drafts = response;
         })
+        this.loading = false;
       },
       listDraftsDraft: function() {
         this.userShowTab = 'draft'
