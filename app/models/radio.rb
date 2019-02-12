@@ -7,7 +7,8 @@ class Radio < ApplicationRecord
   has_many :favorites
   accepts_nested_attributes_for :speakers
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :url, uniqueness: true
 
   after_create :get_img
 
