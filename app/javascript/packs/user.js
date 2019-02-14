@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pageNumber: 0,
         pageSize: 20,
         visibleNextButton: true,
+        programNames: [],
 
       }
     },
@@ -77,8 +78,23 @@ document.addEventListener('DOMContentLoaded', () => {
         this.userShowTab = 'all'
         Api.listDrafts(this.userId).then(function(response){
             app.drafts = response;
+            app.drafts.forEach(function(draft){
+               app.programNames.push(draft.radio_name)
+            });
+            app.getUniqueArray(app.programNames);
+            console.log(app.programs);
         })
         this.loading = false;
+      },
+      getUniqueArray: function(array) {
+        this.programNames = Array.from(new Set(array));
+      },
+      setRadioName(programName) {
+        if(this.search === programName) {
+          this.search = ''
+        } else {
+          this.search = programName
+        }
       },
       listDraftsDraft: function() {
         this.userShowTab = 'draft'

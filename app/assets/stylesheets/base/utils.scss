@@ -1,5 +1,12 @@
 @import "base/variables";
 
+//Pill/////////////
+.program-name-pill {
+  background: $color-primary;
+  color: $color-white;
+  padding: .5rem 1rem;
+  border-radius: 2px;
+}
 //List/////////////
 .list {
   list-style: none;
