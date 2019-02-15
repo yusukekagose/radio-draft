@@ -6,9 +6,7 @@ class PagesController < ApplicationController
     else
       @radios = Radio.all
     end
-    if params[:keyword].present?
-      @radios = @radios.search(params[:keyword])
-    end
+    @radios = @radios.search(params[:keyword]) if params[:keyword].present?
   end
 
   private
@@ -18,9 +16,9 @@ class PagesController < ApplicationController
       when "all"
         Radio.all
       when "popular"
-        Radio.order_by_drafts_count
-      else
         Radio.order_by_favorites_count
+      else
+        Radio.order_by_drafts_count
       end
     end
 
