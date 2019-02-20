@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :favorites]
   before_action :set_user, only: [:show, :toggle_status, :favorites]
-  before_action :authenticate_user!, only: [:show, :favorites]
+  before_action :authorize_user, only: [:show, :favorites]
   before_action :set_counts, only: [:show, :favorites]
 
   def show
