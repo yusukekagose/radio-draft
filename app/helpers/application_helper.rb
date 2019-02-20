@@ -13,6 +13,15 @@ module ApplicationHelper
     return username
   end
 
+  def user_status(status)
+    case status
+    when "open"
+      ""
+    when "secret"
+      "Private"
+    end
+  end
+
   def user_status_toggle_button(status)
     case status
     when "secret"

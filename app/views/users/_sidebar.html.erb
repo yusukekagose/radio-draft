@@ -17,7 +17,7 @@
   </li>
   <li class="list__item d-none-s">
   <i class="fas fa-user-alt mr-m""></i>
-    ステータス<span class="ml-m"><%= @user.status.upcase %></span>
+    ステータス<span class="ml-m font-bold"><%= user_status(@user.status) %></span>
   </li>
   <li class="list__item list__user-status" style="">
   <%= link_to favorites_user_path(current_user), class: "link-black #{active}" do %>
