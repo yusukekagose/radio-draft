@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :favorites]
-  before_action :authorize_user, only: [:show]
+  before_action :set_user, only: [:show, :toggle_status, :favorites]
+  before_action :authenticate_user!, only: [:show, :favorites]
   before_action :set_counts, only: [:show, :favorites]
 
   def show
@@ -12,7 +13,20 @@ class UsersController < ApplicationController
     @radios = Radio.find(radio_ids)
   end
 
+  def toggle_status
+    if @user.secret?
+      @user.open!
+      redirect_to request.referrer
+    elsif @user.open?
+      @user.secret!
+      redirect_to request.referrer
+    end
+  end
+
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
     def set_counts
       @count_drafts = current_user.drafts.count
       @count_favorites = Favorite.where(user_id: current_user.id).count

@@ -4,6 +4,12 @@ const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken
 
 ///DRAFTS/////////////////
+export function radioDrafts (id) {
+    return axios.get(`/radios/${id}/drafts.json`)
+           .then(function(response){
+                return response.data;
+            })
+}
 export function listDrafts (id) {
     return axios.get(`/users/${id}/drafts.json`)
            .then(function(response){

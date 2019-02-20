@@ -34,6 +34,7 @@ class Radio < ApplicationRecord
     end
   end
 
+
   def self.order_by_drafts_count
     joins(:drafts).group("radios.id").order("count(radios.id) DESC")
   end

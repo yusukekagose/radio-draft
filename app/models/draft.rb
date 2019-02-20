@@ -4,4 +4,5 @@ class Draft < ApplicationRecord
   belongs_to :segment, optional: true
 
   enum status: { draft: 0, sent: 1 }
+
 end

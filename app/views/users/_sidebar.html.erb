@@ -15,5 +15,16 @@
     <span class="badge-primary"><%= @count_favorites %></span>
   <% end %>
   </li>
+  <li class="list__item d-none-s">
+  <i class="fas fa-user-alt mr-m""></i>
+    ステータス<span class="ml-m"><%= @user.status.upcase %></span>
+  </li>
+  <li class="list__item list__user-status" style="">
+  <%= link_to favorites_user_path(current_user), class: "link-black #{active}" do %>
+    <div>
+      <%= link_to user_status_toggle_button(@user.status), toggle_status_user_path(@user),  method: :patch, class: "btn-primary-sm link-white" %>
+    </div>
+  <% end %>
+  </li>
   <!-- <li class="list__item"><i class="fas fa-chart-bar mr-m"></i>Stats</li> -->
 </ul>

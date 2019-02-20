@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :drafts
   has_many :favorites
 
+  enum status: { secret: 0, open: 1 }
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

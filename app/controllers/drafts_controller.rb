@@ -47,6 +47,10 @@ class DraftsController < ApplicationController
     end
   end
 
+  def radio_draft
+    @drafts = Radio.find(params[:id]).drafts
+  end
+
   private
     def set_draft
       @draft = Draft.find(params[:id])

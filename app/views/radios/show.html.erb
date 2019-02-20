@@ -26,8 +26,7 @@
         <% end %>
       </div>
       <div class="mb-m">
-        番組HP
-        <%= link_to @radio.url, @radio.url, target: "blank", class: "link-black" %>
+        <%= link_to "番組HPへ", @radio.url, target: "blank", class: "link-black" %>
       </div>
       <div class="mb-m">
         <% if current_user %>
@@ -46,8 +45,11 @@
       </div>
     </div>
   </div>
+  <div id="radio-drafts" class=""></div>
 </div>
 
 
+
+<%= javascript_pack_tag 'radio-drafts', defer: true  %>
 <%= javascript_pack_tag 'favorite', defer: true  %>
 

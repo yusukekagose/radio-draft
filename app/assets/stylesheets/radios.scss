@@ -21,6 +21,11 @@
     margin: 0 auto;
   }
 }
+.radio-show-draft-list {
+  display: grid;
+  grid-template-columns: 3% 97%;
+  font-size: $ml-font-size;
+}
 //new//////
 .radio-form {
   &__title {

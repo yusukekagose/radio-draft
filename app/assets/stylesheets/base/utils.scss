@@ -1,5 +1,8 @@
 @import "base/variables";
 
+.word-wrap {
+  word-wrap: break-word;
+}
 //Pill/////////////
 .program-name-pill {
   background: $color-primary;
@@ -39,6 +42,9 @@
 }
 .mt-l {
   margin-top: 2rem;
+}
+.ml-m {
+  margin-left: 1rem;
 }
 .ml-auto {
   margin-left: auto;

@@ -1,5 +1,5 @@
 class RadiosController < ApplicationController
-  before_action :set_radio, only: [:show, :edit, :update, :get_img]
+  before_action :set_radio, only: [:show, :edit, :update, :get_img, :drafts]
 
   def show
   end
@@ -37,7 +37,14 @@ class RadiosController < ApplicationController
     else
       redirect_to request.referrer
     end
+  end
 
+  def drafts
+    drafts = []
+    User.open.each do |user|
+      drafts += user.drafts.where(radio_id: params[:id], status: 1)
+    end
+    @drafts = drafts
   end
 
   def edit

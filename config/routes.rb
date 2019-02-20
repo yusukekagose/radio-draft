@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       resources :drafts, only: [:index]
       get 'favorites', to: 'users#favorites'
+      patch 'toggle_status', to: 'users#toggle_status'
     end
   end
 
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create]
       get 'info', to: 'favorites#info'
       get 'img', to: 'radios#get_img'
+      get 'drafts', to: 'radios#drafts'
     end
   end
 

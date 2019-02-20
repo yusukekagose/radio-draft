@@ -13,6 +13,15 @@ module ApplicationHelper
     return username
   end
 
+  def user_status_toggle_button(status)
+    case status
+    when "secret"
+      "ハガキを公開する"
+    when "open"
+      "ハガキを非公開にする"
+    end
+  end
+
   def truncate_user_name(speakers)
     speaker_names = ""
     speakers.each do |speaker|
