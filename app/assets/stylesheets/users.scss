@@ -5,6 +5,7 @@
   grid-template-columns: 20% 75%;
   grid-gap: 50px;
   margin-top: 3rem;
+
   &__tab {
     display: flex;
     align-items: center;
@@ -38,6 +39,8 @@
 }
 
 .program-names-container {
+  overflow: auto;
+  white-space: nowrap;
   span {
     display: inline-block;
   }
