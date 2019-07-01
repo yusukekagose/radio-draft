@@ -24,6 +24,7 @@
     <div>
       <%= link_to user_status_toggle_button(@user.status), toggle_status_user_path(@user),  method: :patch, class: "btn-primary-sm link-white" %>
     </div>
+    <div class="d-none-s ml-l">(送信済みのみ)</div>
   <% end %>
   </li>
   <!-- <li class="list__item"><i class="fas fa-chart-bar mr-m"></i>Stats</li> -->

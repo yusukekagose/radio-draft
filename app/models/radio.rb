@@ -11,6 +11,10 @@ class Radio < ApplicationRecord
 
   after_create :get_img
 
+  scope :has_speakers_name_like, -> keyword {
+    joins(:speakers).merge(Speaker.name_like keyword)
+  }
+
   def get_img
     options = {}
     options[:searchType] = "image"
@@ -47,7 +51,7 @@ class Radio < ApplicationRecord
     keyword.strip!
     keyword.downcase!
 
-    (search_by_name(keyword) + search_by_speakers(keyword) + search_by_station(keyword)).uniq
+    (search_by_name(keyword) + has_speakers_name_like(keyword) + search_by_station(keyword)).uniq
   end
 
   def self.search_by_station keyword
@@ -59,11 +63,7 @@ class Radio < ApplicationRecord
   end
 
   def self.search_by_name keyword
-    matches('name', keyword)
-  end
-
-  def self.matches(field_name, param)
-    where("#{field_name} like ?", "%#{param}%")
+    where("name like ?", "%#{keyword}%")
   end
 
 end
