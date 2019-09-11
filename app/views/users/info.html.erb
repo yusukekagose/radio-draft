@@ -1,0 +1,37 @@
+<section id="userInfo" class="user-show-container">
+    <div class="">
+        <%= render "users/sidebar" %>
+    </div>
+
+
+    <section>
+        <div class="user-info-panel">
+            <p class="p-rl-m mb-m">* 住所などのデータは暗号化して保存されています</p>
+            <%= form_for @user do |f| %>
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <th width="25%">ラジオネーム</th>
+                        <th width="70%"><%= f.text_field :radio_name, class: "form-control" %></th>
+                    </tr>
+                    <tr>
+                        <th width="25%">Email</th>
+                        <th width="70%"><%= f.text_field :send_from, value: @user.decrypt(@user.send_from), class: "form-control" %></th>
+                    </tr>
+                    <tr>
+                        <th width="25%">郵便番号</th>
+                        <th width="70%"><%= f.text_field :postal_code, value: @user.decrypt(@user.postal_code), class: "form-control" %></th>
+                    </tr>
+                    <tr>
+                        <th width="25%">住所</th>
+                        <th width="70%"><%= f.text_field :address, value: @user.decrypt(@user.address), class: "form-control" %></th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-m p-rl-m">
+                <%= f.submit "#{(@user.send_from.present? || @user.radio_name.present? || @user.postal_code.present? || @user.address.present?) ? "更新" : "送信"}", class: "btn-primary" %>
+            </div>
+            <% end %>
+        </div>
+    </section>
+</div>

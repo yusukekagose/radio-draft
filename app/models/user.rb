@@ -9,7 +9,30 @@ class User < ApplicationRecord
   has_many :drafts
   has_many :favorites
 
+  before_save :encrypt_data
+
   enum status: { secret: 0, open: 1 }
+
+  require 'digest'
+  SECURE = Digest::MD5.hexdigest(ENV['SECURE'])
+  CIPHER = ENV['CIPHER']
+
+  def encrypt_data
+    self.address = encrypt(self.address)
+    self.postal_code = encrypt(self.postal_code)
+    self.send_from = encrypt(self.send_from)
+  end
+
+  def encrypt(obj)
+    crypt = ActiveSupport::MessageEncryptor.new(SECURE, CIPHER)
+    crypt.encrypt_and_sign(obj)
+  end
+
+  def decrypt(obj)
+    crypt = ActiveSupport::MessageEncryptor.new(SECURE, CIPHER)
+    crypt.decrypt_and_verify(obj)
+  end
+
 
   def self.new_with_session(params, session)
     super.tap do |user|

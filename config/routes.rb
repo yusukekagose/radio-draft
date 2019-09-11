@@ -7,10 +7,11 @@ Rails.application.routes.draw do
              path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
              controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :update] do
     member do
       resources :drafts, only: [:index]
       get 'favorites', to: 'users#favorites'
+      get 'info', to: 'users#info'
       patch 'toggle_status', to: 'users#toggle_status'
     end
   end

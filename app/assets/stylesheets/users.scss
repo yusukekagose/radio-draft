@@ -1,5 +1,15 @@
 @import "base/variables";
 
+#userInfo {
+  .user-info-panel {
+    padding: 40px 70px;
+    border-radius: 5px;
+    background: $color-grey-light-2;
+    table {
+      th { text-align: left; padding: 10px;}
+    }
+  }
+}
 .user-show-container {
   display: grid;
   grid-template-columns: 20% 75%;

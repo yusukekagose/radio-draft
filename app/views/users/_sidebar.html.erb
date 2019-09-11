@@ -1,4 +1,11 @@
 <ul class="list">
+  <% active = current_page?(info_user_path(current_user)) ? "active" : ""   %>
+  <li class="list__item">
+    <%= link_to info_user_path(current_user), class: "link-black #{active}" do %>
+      <i class="fas fa-user-alt mr-m"></i>
+      <span class="<%= active %>">ユーザー情報</span>
+    <% end %>
+  </li>
   <% active = current_page?(user_path(current_user)) ? "active" : ""   %>
   <li class="list__item">
     <%= link_to user_path(current_user), class: "link-black #{active}" do %>
@@ -16,7 +23,7 @@
   <% end %>
   </li>
   <li class="list__item d-none-s">
-  <i class="fas fa-user-alt mr-m""></i>
+  <i class="fas fa-eye mr-m"></i>
     ステータス<span class="ml-m font-bold"><%= user_status(@user.status) %></span>
   </li>
   <li class="list__item list__user-status" style="">

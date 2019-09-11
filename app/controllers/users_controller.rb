@@ -2,10 +2,24 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :favorites]
   before_action :set_user, only: [:show, :toggle_status, :favorites]
   before_action :authorize_user, only: [:show, :favorites]
-  before_action :set_counts, only: [:show, :favorites]
+  before_action :set_counts, only: [:show, :favorites, :info]
 
   def show
     @drafts = current_user.drafts
+  end
+
+  def info
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update_attributes(current_user_params)
+      flash[:notice] = "Saved..."
+    else
+      flash[:alert] = "Failed to update..."
+    end
+    redirect_to info_user_path(current_user)
   end
 
   def favorites
@@ -24,9 +38,15 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def current_user_params
+      params.require(:user).permit(:radio_name, :address, :postal_code, :send_from)
+    end
+
     def set_user
       @user = User.find(params[:id])
     end
+
     def set_counts
       @count_drafts = current_user.drafts.count
       @count_favorites = Favorite.where(user_id: current_user.id).count
