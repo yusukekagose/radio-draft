@@ -14,8 +14,8 @@ class User < ApplicationRecord
   enum status: { secret: 0, open: 1 }
 
   require 'digest'
-  SECURE = Digest::MD5.hexdigest(ENV['SECURE'])
-  CIPHER = ENV['CIPHER']
+  SECURE = '413c37f4d87e4ed15028761cecafee62'
+  CIPHER = 'aes-256-cbc'
 
   def encrypt_data
     self.address = encrypt(self.address)

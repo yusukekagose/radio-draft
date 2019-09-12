@@ -275,3 +275,11 @@
   height: 100%;
 }
 ///Badge////
+
+
+///Link/////
+.link-priamry:visited,
+.link-priamry:link {
+  color: $color-black;
+  text-decoration: none;
+}

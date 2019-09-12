@@ -68,6 +68,6 @@ class RadiosController < ApplicationController
     end
 
     def radio_params
-      params.require(:radio).permit(:name, :url, :img, :station_id, speaker_ids:[], speakers_attributes: [:name])
+      params.require(:radio).permit(:name, :url, :img, :destination, :station_id, speaker_ids:[], speakers_attributes: [:name])
     end
 end

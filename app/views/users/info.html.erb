@@ -7,16 +7,13 @@
     <section>
         <div class="user-info-panel">
             <p class="p-rl-m mb-m">* 住所などのデータは暗号化して保存されています</p>
+            
             <%= form_for @user do |f| %>
             <table style="width: 100%;">
                 <tbody>
                     <tr>
                         <th width="25%">ラジオネーム</th>
                         <th width="70%"><%= f.text_field :radio_name, class: "form-control" %></th>
-                    </tr>
-                    <tr>
-                        <th width="25%">Email</th>
-                        <th width="70%"><%= f.text_field :send_from, value: @user.decrypt(@user.send_from), class: "form-control" %></th>
                     </tr>
                     <tr>
                         <th width="25%">郵便番号</th>

@@ -2,8 +2,7 @@
   <% active = current_page?(info_user_path(current_user)) ? "active" : ""   %>
   <li class="list__item">
     <%= link_to info_user_path(current_user), class: "link-black #{active}" do %>
-      <i class="fas fa-user-alt mr-m"></i>
-      <span class="<%= active %>">ユーザー情報</span>
+      <span class="<%= active %> d-none-s">ユーザー情報</span>
     <% end %>
   </li>
   <% active = current_page?(user_path(current_user)) ? "active" : ""   %>
