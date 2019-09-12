@@ -56,6 +56,10 @@ gem 'jbuilder', '~> 2.5'
 #Security Check
 gem 'brakeman', '~> 4.4'
 
+#To encrypt data
+gem 'attr_encrypted', '~> 3.0', '>= 3.0.3'
+
+
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do

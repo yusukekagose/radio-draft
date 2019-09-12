@@ -9,29 +9,11 @@ class User < ApplicationRecord
   has_many :drafts
   has_many :favorites
 
-  before_save :encrypt_data
+  secret_key = [ENV["ENCRYPT_DB_SECRET_KEY"]].pack("H*")
+  attr_encrypted :address, :key => secret_key
+  attr_encrypted :postal_code, :key => secret_key
 
   enum status: { secret: 0, open: 1 }
-
-  require 'digest'
-  SECURE = '413c37f4d87e4ed15028761cecafee62'
-  CIPHER = 'aes-256-cbc'
-
-  def encrypt_data
-    self.address = encrypt(self.address)
-    self.postal_code = encrypt(self.postal_code)
-    self.send_from = encrypt(self.send_from)
-  end
-
-  def encrypt(obj)
-    crypt = ActiveSupport::MessageEncryptor.new(SECURE, CIPHER)
-    crypt.encrypt_and_sign(obj)
-  end
-
-  def decrypt(obj)
-    crypt = ActiveSupport::MessageEncryptor.new(SECURE, CIPHER)
-    crypt.decrypt_and_verify(obj)
-  end
 
 
   def self.new_with_session(params, session)

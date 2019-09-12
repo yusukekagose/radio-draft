@@ -64,15 +64,15 @@
         </a>
       </div>
       <div>
-      <a v-bind:href="'mailto:' + draft.destination + '?subject=' + draft.segment_name + 
+      <a v-if="draft.destination != null && draft.destination.length != 0 && draft.destination.length > 0" v-bind:href="'mailto:' + draft.destination + '?subject=' + draft.segment_name + 
                       '&body=' +  'ラジオネーム' + ' ' + <%= current_user.radio_name.to_json %>
                                   + '%0D%0A'
                                   + '%0D%0A' + 
                                   draft.content
                                   + '%0D%0A%0D%0A' + 
-                                  '〒' + ' ' + <%= current_user.decrypt(current_user.postal_code).to_json %>
+                                  '〒' + ' ' + <%= current_user.postal_code.to_json %>
                                   + '%0D%0A' +
-                                  '住所' + ' ' + <%= current_user.decrypt(current_user.address).to_json %>
+                                  '住所' + ' ' + <%= current_user.address.to_json %>
                                   " 
                       class="link-black">
         <i class="fas fa-envelope"></i>
