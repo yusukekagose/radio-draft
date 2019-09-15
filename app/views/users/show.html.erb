@@ -64,7 +64,7 @@
         </a>
       </div>
       <div>
-      <a v-if="draft.destination != null && draft.destination.length != 0 && draft.destination.length > 0" v-bind:href="'mailto:' + draft.destination + '?subject=' + draft.segment_name + 
+      <a v-if="draft.status == 'draft'  && draft.destination != null && draft.destination.length != 0 && draft.destination.length > 0" v-bind:href="'mailto:' + draft.destination + '?subject=' + draft.segment_name + 
                       '&body=' +  'ラジオネーム' + ' ' + <%= current_user.radio_name.to_json %>
                                   + '%0D%0A'
                                   + '%0D%0A' + 
