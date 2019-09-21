@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   private
 
     def current_user_params
-      params.require(:user).permit(:radio_name, :address, :postal_code)
+      params.require(:user).permit(:radio_name, :address, :postal_code, :real_name)
     end
 
     def set_user

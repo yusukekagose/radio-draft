@@ -70,6 +70,8 @@
                                   + '%0D%0A' + 
                                   draft.content
                                   + '%0D%0A%0D%0A' + 
+                                  '本名' + ' ' + <%= current_user.real_name.to_json %>
+                                  + '%0D%0A' +
                                   '〒' + ' ' + <%= current_user.postal_code.to_json %>
                                   + '%0D%0A' +
                                   '住所' + ' ' + <%= current_user.address.to_json %>

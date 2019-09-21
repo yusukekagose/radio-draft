@@ -12,6 +12,7 @@ class User < ApplicationRecord
   secret_key = [ENV["ENCRYPT_DB_SECRET_KEY"]].pack("H*")
   attr_encrypted :address, :key => secret_key
   attr_encrypted :postal_code, :key => secret_key
+  attr_encrypted :real_name, :key => secret_key
 
   enum status: { secret: 0, open: 1 }
 
